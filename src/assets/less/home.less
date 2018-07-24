@@ -2,8 +2,30 @@
   height: 100%;
   width: 100%;
   &-header {
-    height: 100px;
+    height: 50px;
     width: 100%;
     border-bottom: 1px solid #eaeaea;
+  }
+  &-body {
+    padding: 50px;
+    &-top {
+      &-carousel {
+        height: 250px;
+        border: 1px solid #eaeaea;
+      }
+      &-boxContainer {
+        margin-top: 10px;
+        display: flex;
+        &-box {
+          margin-left: 10px;
+          height: 100px;
+          flex: 1;
+          border: 1px solid #eaeaea;
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
   }
 }

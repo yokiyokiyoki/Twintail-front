@@ -5,3 +5,11 @@ body,
   width: 100%;
   margin: 0;
 }
+.clearfix {
+  &::after {
+    content: "";
+    display: inline-block;
+    clear: both;
+    overflow: hidden;
+  }
+}
