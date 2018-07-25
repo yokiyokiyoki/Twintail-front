@@ -22,6 +22,12 @@
                         <div class="home-container-body-bottom-left-header-item" style="flex:1;">1</div>
                         <div class="home-container-body-bottom-left-header-item" style="flex:3;">1</div>
                     </div>
+                    <div class="home-container-body-bottom-left-body">
+                        <div class="home-container-body-bottom-left-body-card">1</div>
+                        <div class="home-container-body-bottom-left-body-card">1</div>
+                        <div class="home-container-body-bottom-left-body-card">1</div>
+                        <div class="home-container-body-bottom-left-body-card">1</div>
+                    </div>
                 </div>
                 <div class="home-container-body-bottom-right"></div>
             </div>
