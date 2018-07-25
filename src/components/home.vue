@@ -15,7 +15,15 @@
                 </div>
             </div>
             <div class="home-container-body-bottom">
-
+                <div class="home-container-body-bottom-left">
+                    <div class="home-container-body-bottom-left-header">
+                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">1</div>
+                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">1</div>
+                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">1</div>
+                        <div class="home-container-body-bottom-left-header-item" style="flex:3;">1</div>
+                    </div>
+                </div>
+                <div class="home-container-body-bottom-right"></div>
             </div>
         </div>
         <div class="home-container-footer"></div>

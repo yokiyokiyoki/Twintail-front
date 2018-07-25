@@ -7,10 +7,10 @@
     border-bottom: 1px solid #eaeaea;
   }
   &-body {
-    padding: 50px;
+    padding: 25px;
     &-top {
       &-carousel {
-        height: 250px;
+        height: 500px;
         border: 1px solid #eaeaea;
       }
       &-boxContainer {
@@ -18,13 +18,37 @@
         display: flex;
         &-box {
           margin-left: 10px;
-          height: 100px;
+          height: 150px;
           flex: 1;
           border: 1px solid #eaeaea;
           &:first-child {
             margin-left: 0;
           }
         }
+      }
+    }
+    &-bottom {
+      display: flex;
+      margin-top: 20px;
+      &-left {
+        flex: 4;
+        &-header {
+          height: 50px;
+          border: 1px solid #eaeaea;
+          display: flex;
+          &-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #eaeaea;
+            &:last-child {
+              border-right: none;
+            }
+          }
+        }
+      }
+      &-right {
+        flex: 1;
       }
     }
   }
