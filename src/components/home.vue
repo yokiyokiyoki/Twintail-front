@@ -17,10 +17,10 @@
             <div class="home-container-body-bottom">
                 <div class="home-container-body-bottom-left">
                     <div class="home-container-body-bottom-left-header">
-                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">1</div>
-                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">1</div>
-                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">1</div>
-                        <div class="home-container-body-bottom-left-header-item" style="flex:3;">1</div>
+                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">最新</div>
+                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">本周热门</div>
+                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">热门推荐</div>
+                        <div class="home-container-body-bottom-left-header-item" style="flex:3;">双马尾协会成员专区</div>
                     </div>
                     <div class="home-container-body-bottom-left-body">
                         <div class="home-container-body-bottom-left-body-card">1</div>
@@ -35,7 +35,9 @@
                         <div class="home-container-body-bottom-left-body-card">1</div>
                     </div>
                 </div>
-                <div class="home-container-body-bottom-right"></div>
+                <div class="home-container-body-bottom-right">
+                    <div class="home-container-body-bottom"></div>
+                </div>
             </div>
         </div>
         <div class="home-container-footer"></div>
