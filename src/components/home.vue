@@ -20,16 +20,66 @@
                         <div class="home-container-body-bottom-left-header-item" style="flex:3;">双马尾协会成员专区</div>
                     </div>
                     <div class="home-container-body-bottom-left-body">
-                        <div class="home-container-body-bottom-left-body-card">1</div>
-                        <div class="home-container-body-bottom-left-body-card">1</div>
-                        <div class="home-container-body-bottom-left-body-card">1</div>
-                        <div class="home-container-body-bottom-left-body-card">1</div>
-                    </div>
-                    <div class="home-container-body-bottom-left-body">
-                        <div class="home-container-body-bottom-left-body-card">1</div>
-                        <div class="home-container-body-bottom-left-body-card">1</div>
-                        <div class="home-container-body-bottom-left-body-card">1</div>
-                        <div class="home-container-body-bottom-left-body-card">1</div>
+                        <div class="home-container-body-bottom-left-body-card">
+                            <div class="box">
+                                <div class="box-pic"></div>
+                                <div class="box-bottom clearfix">
+                                    <div class="box-bottom-left">小姐姐</div>
+                                    <div class="box-bottom-right">
+                                        <i class="el-icon-star-on"></i>
+                                        <span class="num">200</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="home-container-body-bottom-left-body-card">
+                            <div class="box">
+                                <div class="box-pic"></div>
+                                <div class="box-bottom clearfix">
+                                    <div class="box-bottom-left">小姐姐</div>
+                                    <div class="box-bottom-right">
+                                        <i class="el-icon-star-on"></i>
+                                        <span class="num">200</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="home-container-body-bottom-left-body-card">
+                            <div class="box">
+                                <div class="box-pic"></div>
+                                <div class="box-bottom clearfix">
+                                    <div class="box-bottom-left">小姐姐</div>
+                                    <div class="box-bottom-right">
+                                        <i class="el-icon-star-on"></i>
+                                        <span class="num">200</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="home-container-body-bottom-left-body-card">
+                            <div class="box">
+                                <div class="box-pic"></div>
+                                <div class="box-bottom clearfix">
+                                    <div class="box-bottom-left">小姐姐</div>
+                                    <div class="box-bottom-right">
+                                        <i class="el-icon-star-on"></i>
+                                        <span class="num">200</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="home-container-body-bottom-left-body-card">
+                            <div class="box">
+                                <div class="box-pic"></div>
+                                <div class="box-bottom clearfix">
+                                    <div class="box-bottom-left">小姐姐</div>
+                                    <div class="box-bottom-right">
+                                        <i class="el-icon-star-on"></i>
+                                        <span class="num">200</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="home-container-body-bottom-right">

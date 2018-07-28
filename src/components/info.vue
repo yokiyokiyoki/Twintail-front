@@ -27,7 +27,7 @@
                         <div class="info-container-body-middle-box-container-bottom clearfix">
                             <div class="info-container-body-middle-box-container-bottom-left">小姐姐</div>
                             <div class="info-container-body-middle-box-container-bottom-right">
-                                <i class="el-icon-view"></i>
+                                <i class="el-icon-star-on"></i>
                                 <span class="num">200</span>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="info-container-body-middle-box-container-bottom clearfix">
                             <div class="info-container-body-middle-box-container-bottom-left">小姐姐</div>
                             <div class="info-container-body-middle-box-container-bottom-right">
-                                <i class="el-icon-view"></i>
+                                <i class="el-icon-star-on"></i>
                                 <span class="num">200</span>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                         <div class="info-container-body-middle-box-container-bottom clearfix">
                             <div class="info-container-body-middle-box-container-bottom-left">小姐姐</div>
                             <div class="info-container-body-middle-box-container-bottom-right">
-                                <i class="el-icon-view"></i>
+                                <i class="el-icon-star-on"></i>
                                 <span class="num">200</span>
                             </div>
                         </div>
