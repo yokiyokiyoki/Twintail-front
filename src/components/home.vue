@@ -27,55 +27,7 @@
                         <!-- <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='双马尾协会成员专区'}" style="flex:3;" @click="handleClickItem('双马尾协会成员专区')">双马尾协会成员专区</div> -->
                     </div>
                     <div class="home-container-body-bottom-left-body">
-                        <div class="home-container-body-bottom-left-body-card">
-                            <div class="box">
-                                <div class="box-pic"></div>
-                                <div class="box-bottom clearfix">
-                                    <div class="box-bottom-left">小姐姐</div>
-                                    <div class="box-bottom-right">
-                                        <i class="el-icon-star-on"></i>
-                                        <span class="num">200</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="home-container-body-bottom-left-body-card">
-                            <div class="box">
-                                <div class="box-pic"></div>
-                                <div class="box-bottom clearfix">
-                                    <div class="box-bottom-left">小姐姐</div>
-                                    <div class="box-bottom-right">
-                                        <i class="el-icon-star-on"></i>
-                                        <span class="num">200</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="home-container-body-bottom-left-body-card">
-                            <div class="box">
-                                <div class="box-pic"></div>
-                                <div class="box-bottom clearfix">
-                                    <div class="box-bottom-left">小姐姐</div>
-                                    <div class="box-bottom-right">
-                                        <i class="el-icon-star-on"></i>
-                                        <span class="num">200</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="home-container-body-bottom-left-body-card">
-                            <div class="box">
-                                <div class="box-pic"></div>
-                                <div class="box-bottom clearfix">
-                                    <div class="box-bottom-left">小姐姐</div>
-                                    <div class="box-bottom-right">
-                                        <i class="el-icon-star-on"></i>
-                                        <span class="num">200</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="home-container-body-bottom-left-body-card">
+                        <div class="home-container-body-bottom-left-body-card" v-for='n in 8' :key='n'>
                             <div class="box">
                                 <div class="box-pic"></div>
                                 <div class="box-bottom clearfix">
@@ -90,7 +42,12 @@
                     </div>
                 </div>
                 <div class="home-container-body-bottom-right">
-                    <div class="home-container-body-bottom"></div>
+                    <div class="home-container-body-bottom-right-header">
+                        双马尾协会成员
+                    </div>
+                    <div class="home-container-body-bottom-right-body">
+                        <div class="box"></div>
+                    </div>
                 </div>
             </div>
         </div>

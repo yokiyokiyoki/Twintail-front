@@ -14,11 +14,7 @@
                     </div>
                 </div>
                 <div class="detail-container-body-right-body">
-                    <div class="pic"></div>
-                    <div class="pic"></div>
-                    <div class="pic"></div>
-                    <div class="pic"></div>
-                    <div class="pic"></div>
+                    <div class="pic" v-for='n in 10' :key='n'></div>
                 </div>
             </div>
         </div>
