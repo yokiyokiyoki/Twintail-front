@@ -1,9 +1,6 @@
 <template>
     <div class="home-container">
-        <div class="home-container-header">
-            <div class="home-container-header-left"></div>
-            <div class="home-container-header-right"></div>
-        </div>
+        <common-header/>
         <div class="home-container-body">
             <div class="home-container-body-top">
                 <div class="home-container-body-top-carousel"></div>
@@ -44,7 +41,10 @@
     </div>
 </template>
 <script>
+import commonHeader from './header'
 export default {
-    
+    components:{
+        commonHeader
+    }
 }
 </script>

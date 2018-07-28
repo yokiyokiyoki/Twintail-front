@@ -1,9 +1,6 @@
 <template>
     <div class="info-container">
-        <div class="info-container-header">
-            <div class="info-container-header-left"></div>
-            <div class="info-container-header-right"></div>
-        </div>
+        <common-header/>
         <div class="info-container-body">
             <div class="info-container-body-top">
                 <div class="info-container-body-top-left"></div>
@@ -65,8 +62,11 @@
     </div>
 </template>
 <script>
+import commonHeader from './header'
 export default {
-    
+    components:{
+        commonHeader
+    }
 }
 </script>
 
