@@ -6,6 +6,8 @@
                 <div class="info-container-body-top-left"></div>
                 <div class="info-container-body-top-right">
                     <div class="info-container-body-top-right-name">Yoki</div>
+                    <div class="info-container-body-top-right-text">年龄:22</div>
+                    <div class="info-container-body-top-right-text">个性签名:我是双马尾协会成员的一份子</div>
                 </div>
             </div>
             <div class="info-container-body-middle clearfix">

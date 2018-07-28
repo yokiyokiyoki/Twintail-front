@@ -112,6 +112,7 @@ export default {
   width: 100%;
   border-bottom: 1px solid #eaeaea;
   box-sizing: border-box;
+  background: white;
   &-left {
     float: left;
     display: flex;
