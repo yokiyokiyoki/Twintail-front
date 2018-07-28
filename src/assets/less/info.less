@@ -22,13 +22,33 @@
       }
     }
     &-middle {
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
       &-box {
-        float: left;
         height: 300px;
-        border: 1px solid #eaeaea;
-        margin-left: 30px;
-        width: 200px;
+        width: 33.33%;
         margin-top: 20px;
+        box-sizing: border-box;
+        padding-left: 5px;
+        padding-right: 5px;
+        &-container {
+          border: 1px solid #eaeaea;
+          height: 100%;
+        }
+        &:first-child {
+          padding-left: 0px;
+          padding-right: 10px;
+        }
+        &:nth-child(3n) {
+          padding-left: 10px;
+          padding-right: 0px;
+        }
+        &:nth-of-type(4n) {
+          padding-left: 0px;
+          padding-right: 10px;
+        }
       }
     }
   }
