@@ -1,7 +1,9 @@
 <template>
     <div class="container-header clearfix">
         <div class="container-header-left">
-            <div class="pic" @click="$router.push('/')"></div>
+            <div class="pic" @click="$router.push('/')">
+                <img src="~@/assets/images/logo.png" alt="双马尾协会">
+            </div>
             <div class="title">
                 <div class="title-top">双马尾协会</div>
                 <div class="title-bottom">中国首个双马尾爱好者聚集地</div>
@@ -123,6 +125,9 @@ export default {
       border: 1px solid #eaeaea;
       border-radius: 80px;
       cursor: pointer;
+      img {
+        height: 80px;
+      }
     }
     .title {
       margin-left: 20px;
