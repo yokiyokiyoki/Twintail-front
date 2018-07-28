@@ -133,6 +133,7 @@ export default {
       margin-left: 20px;
       &-top {
         text-align: left;
+        color: rgb(239, 156, 190);
       }
       &-bottom {
         font-size: 12px;

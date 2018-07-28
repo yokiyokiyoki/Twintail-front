@@ -5,8 +5,8 @@
     padding: 25px;
     &-top {
       &-carousel {
-        height: 500px;
-        border: 1px solid #eaeaea;
+        height: 400px;
+        // border: 1px solid #eaeaea;
       }
       &-boxContainer {
         margin-top: 10px;
@@ -25,7 +25,7 @@
     }
     &-bottom {
       display: flex;
-      margin-top: 20px;
+      margin-top: 30px;
       &-left {
         flex: 4;
         &-header {
@@ -37,6 +37,11 @@
             justify-content: center;
             align-items: center;
             border-right: 1px solid #eaeaea;
+            cursor: pointer;
+            &.active {
+              background: rgb(239, 156, 190);
+              color: white;
+            }
             &:last-child {
               border-right: none;
             }
