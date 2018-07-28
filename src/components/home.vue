@@ -20,10 +20,11 @@
             <div class="home-container-body-bottom">
                 <div class="home-container-body-bottom-left">
                     <div class="home-container-body-bottom-left-header">
-                        <div class="home-container-body-bottom-left-header-item active" style="flex:1;">最新</div>
-                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">本周热门</div>
-                        <div class="home-container-body-bottom-left-header-item" style="flex:1;">热门推荐</div>
-                        <div class="home-container-body-bottom-left-header-item" style="flex:3;">双马尾协会成员专区</div>
+                        <!-- <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='最新'}" style="flex:1;" @click="handleClickItem('最新')">最新</div>
+                        <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='本周热门'}" style="flex:1;" @click="handleClickItem('本周热门')">本周热门</div>
+                        <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='热门推荐'}" style="flex:1;" @click="handleClickItem('热门推荐')">热门推荐</div> -->
+                        <div class="home-container-body-bottom-left-header-item" v-for='(item,index) in menulist' style="flex:1;" :class="{'active':activeItem==item}" @click="handleClickItem(item)" :key="index">{{item}}</div>
+                        <!-- <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='双马尾协会成员专区'}" style="flex:3;" @click="handleClickItem('双马尾协会成员专区')">双马尾协会成员专区</div> -->
                     </div>
                     <div class="home-container-body-bottom-left-body">
                         <div class="home-container-body-bottom-left-body-card">
@@ -99,8 +100,20 @@
 <script>
 import commonHeader from './header'
 export default {
+    data(){
+        return{
+            activeItem:'最新',
+            menulist:['最新','本周热门','热门推荐']
+          }
+    },
     components:{
         commonHeader
+    },
+    methods:{
+        handleClickItem(item){
+            console.log(item)
+            this.activeItem=item
+        }
     }
 }
 </script>
