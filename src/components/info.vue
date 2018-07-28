@@ -11,16 +11,40 @@
             </div>
             <div class="info-container-body-middle clearfix">
                 <div class="info-container-body-middle-box">
-                    <div class="info-container-body-middle-box-container"></div>
+                    <div class="info-container-body-middle-box-container">
+                        <div class="info-container-body-middle-box-container-pic"></div>
+                        <div class="info-container-body-middle-box-container-bottom clearfix">
+                            <div class="info-container-body-middle-box-container-bottom-left">1</div>
+                            <div class="info-container-body-middle-box-container-bottom-right">2</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="info-container-body-middle-box">
-                    <div class="info-container-body-middle-box-container"></div>
+                    <div class="info-container-body-middle-box-container">
+                        <div class="info-container-body-middle-box-container-pic"></div>
+                        <div class="info-container-body-middle-box-container-bottom clearfix">
+                            <div class="info-container-body-middle-box-container-bottom-left">1</div>
+                            <div class="info-container-body-middle-box-container-bottom-right">2</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="info-container-body-middle-box">
-                    <div class="info-container-body-middle-box-container"></div>
+                    <div class="info-container-body-middle-box-container">
+                        <div class="info-container-body-middle-box-container-pic"></div>
+                        <div class="info-container-body-middle-box-container-bottom clearfix">
+                            <div class="info-container-body-middle-box-container-bottom-left">1</div>
+                            <div class="info-container-body-middle-box-container-bottom-right">2</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="info-container-body-middle-box">
-                    <div class="info-container-body-middle-box-container"></div>
+                    <div class="info-container-body-middle-box-container">
+                        <div class="info-container-body-middle-box-container-pic"></div>
+                        <div class="info-container-body-middle-box-container-bottom clearfix">
+                            <div class="info-container-body-middle-box-container-bottom-left">1</div>
+                            <div class="info-container-body-middle-box-container-bottom-right">2</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
