@@ -12,43 +12,7 @@
                 </div>
             </div>
             <div class="info-container-body-middle clearfix">
-                <div class="info-container-body-middle-box">
-                    <div class="info-container-body-middle-box-container">
-                        <div class="info-container-body-middle-box-container-pic"></div>
-                        <div class="info-container-body-middle-box-container-bottom clearfix">
-                            <div class="info-container-body-middle-box-container-bottom-left">小姐姐</div>
-                            <div class="info-container-body-middle-box-container-bottom-right">
-                                <i class="el-icon-star-on"></i>
-                                <span class="num">200</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="info-container-body-middle-box">
-                    <div class="info-container-body-middle-box-container">
-                        <div class="info-container-body-middle-box-container-pic"></div>
-                        <div class="info-container-body-middle-box-container-bottom clearfix">
-                            <div class="info-container-body-middle-box-container-bottom-left">小姐姐</div>
-                            <div class="info-container-body-middle-box-container-bottom-right">
-                                <i class="el-icon-star-on"></i>
-                                <span class="num">200</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="info-container-body-middle-box">
-                    <div class="info-container-body-middle-box-container">
-                        <div class="info-container-body-middle-box-container-pic"></div>
-                        <div class="info-container-body-middle-box-container-bottom clearfix">
-                            <div class="info-container-body-middle-box-container-bottom-left">小姐姐</div>
-                            <div class="info-container-body-middle-box-container-bottom-right">
-                                <i class="el-icon-star-on"></i>
-                                <span class="num">200</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="info-container-body-middle-box">
+                <div class="info-container-body-middle-box" v-for='n in 5' :key='n' @click="handleItem(n)">
                     <div class="info-container-body-middle-box-container">
                         <div class="info-container-body-middle-box-container-pic"></div>
                         <div class="info-container-body-middle-box-container-bottom clearfix">
@@ -69,6 +33,11 @@ import commonHeader from './header'
 export default {
     components:{
         commonHeader
+    },
+    methods:{
+        handleItem(item){
+            this.$router.push('/detail')
+        }
     }
 }
 </script>
