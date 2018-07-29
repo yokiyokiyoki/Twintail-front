@@ -4,18 +4,18 @@
         <div class="home-container-body">
             <div class="home-container-body-top">
                 <div class="home-container-body-top-carousel">
-                    <el-carousel :interval="4000" type="card" height="400px">
+                    <el-carousel :interval="4000"  height="400px">
                         <el-carousel-item v-for="item in 5" :key="item">
                         <h3>{{ item }}</h3>
                         </el-carousel-item>
                     </el-carousel>
                 </div>
-                <!-- <div class="home-container-body-top-boxContainer clearfix" >
+                <div class="home-container-body-top-boxContainer clearfix" >
                     <div class="home-container-body-top-boxContainer-box" v-for='n in 5' :key='n'>
                         <div class="home-container-body-top-boxContainer-box-pic"></div>
-                        <div class="home-container-body-top-boxContainer-box-txt"></div>
+                        <div class="home-container-body-top-boxContainer-box-txt">我是广告词</div>
                     </div>
-                </div> -->
+                </div>
             </div>
             <div class="home-container-body-bottom">
                 <div class="home-container-body-bottom-left">

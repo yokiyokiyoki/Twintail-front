@@ -17,7 +17,17 @@
           margin-left: 10px;
           height: 150px;
           flex: 1;
-          border: 1px solid #eaeaea;
+          display: flex;
+          flex-direction: column;
+
+          &-pic {
+            flex: 1;
+            border: 1px solid #eaeaea;
+          }
+          &-txt {
+            height: 30px;
+            text-align: left;
+          }
           &:first-child {
             margin-left: 0;
           }
