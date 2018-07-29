@@ -5,7 +5,7 @@
             <div class="home-container-body-top">
                 <div class="home-container-body-top-carousel">
                     <el-carousel :interval="4000"  height="400px">
-                        <el-carousel-item v-for="item in 5" :key="item">
+                        <el-carousel-item v-for="item in 5" :key="item" @click='handleCarousel(item)'>
                         <h3>{{ item }}</h3>
                         </el-carousel-item>
                     </el-carousel>
@@ -92,6 +92,9 @@ export default {
         },
         handleClickMember(item){
             this.$router.push('/info')
+        },
+        handleCarousel(item){
+            console.log(item)
         }
     }
 }
@@ -101,7 +104,7 @@ export default {
   color: #475669;
   font-size: 18px;
   opacity: 0.75;
-  line-height: 500px;
+  line-height: 400px;
   margin: 0;
 }
 
