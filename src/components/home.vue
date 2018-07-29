@@ -5,8 +5,8 @@
             <div class="home-container-body-top">
                 <div class="home-container-body-top-carousel">
                     <el-carousel :interval="4000"  height="400px">
-                        <el-carousel-item v-for="item in 5" :key="item" @click='handleCarousel(item)'>
-                        <h3>{{ item }}</h3>
+                        <el-carousel-item v-for="item in 5" :key="item" >
+                        <div @click='handleCarousel(item)'>第{{ item }}张小姐姐套图</div>
                         </el-carousel-item>
                     </el-carousel>
                 </div>
@@ -95,17 +95,20 @@ export default {
         },
         handleCarousel(item){
             console.log(item)
+            this.$router.push('/detail')
         }
     }
 }
 </script>
 <style lang="less" scoped>
-.el-carousel__item h3 {
+.el-carousel__item div {
   color: #475669;
   font-size: 18px;
   opacity: 0.75;
   line-height: 400px;
   margin: 0;
+  cursor: pointer;
+  user-select: none;
 }
 
 .el-carousel__item:nth-child(2n) {
