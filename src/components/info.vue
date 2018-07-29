@@ -5,9 +5,10 @@
             <div class="info-container-body-top">
                 <div class="info-container-body-top-left"></div>
                 <div class="info-container-body-top-right">
-                    <div class="info-container-body-top-right-name">Yoki</div>
-                    <div class="info-container-body-top-right-text">年龄:22</div>
-                    <div class="info-container-body-top-right-text">个性签名:我是双马尾协会成员的一份子</div>
+                    <div class="info-container-body-top-right-name">双马尾小姐姐</div>
+                    <div class="info-container-body-top-right-text">ID:22</div>
+                    <div class="info-container-body-top-right-text">微博:小姐姐微博</div>
+                    <div class="info-container-body-top-right-text">简介:我是双马尾协会成员的一份子</div>
                 </div>
             </div>
             <div class="info-container-body-middle clearfix">
