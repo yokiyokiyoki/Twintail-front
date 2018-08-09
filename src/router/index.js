@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "@/components/home";
-import Info from "@/components/info";
-import Detail from "@/components/detail";
+import PCHome from "@/components/pc/home";
+import PCInfo from "@/components/pc/info";
+import PCDetail from "@/components/pc/detail";
 
 Vue.use(Router);
 
@@ -12,17 +12,17 @@ export default new Router({
     {
       path: "/",
       name: "Home",
-      component: Home
+      component: PCHome
     },
     {
       path: "/info",
       name: "Info",
-      component: Info
+      component: PCInfo
     },
     {
       path: "/detail",
       name: "Detail",
-      component: Detail
+      component: PCDetail
     }
   ]
 });
