@@ -4,15 +4,17 @@ import PCHome from "@/components/pc/home";
 import PCInfo from "@/components/pc/info";
 import PCDetail from "@/components/pc/detail";
 
+import MOBILEHome from "@/components/mobile/home";
+
 Vue.use(Router);
 
 export default new Router({
   routes: [
-    { path: "*", component: Home },
+    { path: "*", component: IsPC() ? PCHome : MOBILEHome },
     {
       path: "/",
       name: "Home",
-      component: PCHome
+      component: IsPC() ? PCHome : MOBILEHome
     },
     {
       path: "/info",
@@ -26,3 +28,24 @@ export default new Router({
     }
   ]
 });
+
+function IsPC() {
+  var userAgentInfo = navigator.userAgent;
+  var Agents = [
+    "Android",
+    "iPhone",
+    "SymbianOS",
+    "Windows Phone",
+    "iPad",
+    "iPod"
+  ];
+  let flag = true;
+  for (let v = 0; v < Agents.length; v++) {
+    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+      flag = false;
+      break;
+    }
+  }
+  console.log(flag, navigator.userAgent);
+  return flag;
+}
