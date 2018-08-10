@@ -5,6 +5,8 @@ import PCInfo from "@/components/pc/info";
 import PCDetail from "@/components/pc/detail";
 
 import MOBILEHome from "@/components/mobile/home";
+import MOBILEDetail from "@/components/mobile/detail";
+import MOBILEInfo from "@/components/mobile/info";
 
 Vue.use(Router);
 
@@ -19,12 +21,12 @@ export default new Router({
     {
       path: "/info",
       name: "Info",
-      component: PCInfo
+      component: IsPC() ? PCInfo : MOBILEInfo
     },
     {
       path: "/detail",
       name: "Detail",
-      component: PCDetail
+      component: IsPC() ? PCDetail : MOBILEDetail
     }
   ]
 });

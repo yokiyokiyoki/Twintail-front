@@ -10,15 +10,36 @@
             </div>
         </div>
         <div class="container-header-right">
-            <van-icon name="search" />
+            <van-icon name="search" @click="searchDialog"/>
         </div>
+        <van-dialog
+        v-model="show"
+        show-cancel-button
+        :before-close="beforeClose"
+        >
+        <van-search placeholder="请输入搜索关键词" v-model="search" />
+        </van-dialog>
     </div>
+    
 </template>
 <script>
 export default {
     data(){
         return{
-            search:''
+            search:'',
+            show:false
+        }
+    },
+    methods:{
+        searchDialog(){
+            this.show=true
+        },
+        beforeClose(action, done) {
+            if (action === 'confirm') {
+                setTimeout(done, 1000);
+            } else {
+                done();
+            }
         }
     }
 }
