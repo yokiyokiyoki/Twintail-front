@@ -1,5 +1,7 @@
 <template>
-    <div class="mobile info-container"></div>
+    <div class="mobile info-container">
+        <common-header/>
+    </div>
 </template>
 <script>
 import commonHeader from './header'
@@ -8,5 +10,5 @@ export default {
         commonHeader
     },
 }
-</script>
+</script> 
 

@@ -47,6 +47,23 @@ export default {
             menulist:['最新','本周热门','热门推荐'],
             menuActive:'最新'
         }
+    },
+    methods:{
+        handleClickItem(item){
+            console.log(item)
+            this.$router.push('/detail')
+        },
+        handleClickMenu(item){
+            console.log(item)
+            this.activeItem=item
+        },
+        handleClickMember(item){
+            this.$router.push('/info')
+        },
+        handleCarousel(item){
+            console.log(item)
+            this.$router.push('/detail')
+        }
     }
 }
 </script>

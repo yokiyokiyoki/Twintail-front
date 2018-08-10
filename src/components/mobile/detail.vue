@@ -1,5 +1,7 @@
 <template>
-    <div class="mobile detail-container"></div>
+    <div class="mobile detail-container">
+        <common-header/>
+    </div>
 </template>
 <script>
 import commonHeader from './header'
