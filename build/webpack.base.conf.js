@@ -43,16 +43,6 @@ module.exports = {
           resolve("test"),
           resolve("node_modules/webpack-dev-server/client")
         ],
-        plugins: [
-          [
-            "import",
-            {
-              libraryName: "vant",
-              libraryDirectory: "es",
-              style: true
-            }
-          ]
-        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
