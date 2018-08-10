@@ -7,6 +7,11 @@ const R = require("ramda");
 import "@/assets/less/app.less";
 Vue.prototype.$R = R;
 
+import Vant from "vant";
+import "vant/lib/vant-css/index.css";
+
+Vue.use(Vant);
+
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 

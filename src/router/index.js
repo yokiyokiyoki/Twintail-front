@@ -46,6 +46,5 @@ function IsPC() {
       break;
     }
   }
-  console.log(flag, navigator.userAgent);
   return flag;
 }
