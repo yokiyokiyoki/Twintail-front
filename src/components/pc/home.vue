@@ -1,5 +1,5 @@
 <template>
-    <div class="home-container pc">
+    <div class="pc home-container">
         <common-header/>
         <div class="home-container-body">
             <div class="home-container-body-top">
