@@ -3,7 +3,6 @@ import Router from "vue-router";
 import PCHome from "@/components/pc/home";
 import PCInfo from "@/components/pc/info";
 import PCDetail from "@/components/pc/detail";
-
 import MOBILEHome from "@/components/mobile/home";
 import MOBILEDetail from "@/components/mobile/detail";
 import MOBILEInfo from "@/components/mobile/info";
@@ -32,7 +31,7 @@ export default new Router({
 });
 
 function IsPC() {
-  var userAgentInfo = navigator.userAgent;
+  let userAgentInfo = navigator.userAgent;
   var Agents = [
     "Android",
     "iPhone",
