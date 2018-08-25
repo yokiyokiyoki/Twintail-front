@@ -1,11 +1,8 @@
 <template>
     <div class="admin-container">
         <div class="admin-container-header">
-            <div class="button people active">
-                小姐姐
-            </div>
-            <div class="button album">
-                写真集
+            <div class="button people" v-for='(item,index) in menu' :key='index' :class="{active:active==item.id}" @click="handleItem(item)">
+                {{item.name}}
             </div>
         </div>
         <router-view></router-view>
@@ -13,8 +10,17 @@
 </template>
 <script>
 export default {
+    data(){
+        return{
+            active:'people',
+            menu:[{name:'小姐姐',id:'people'},{name:'写真集',id:'album'}]
+        }
+    },
     methods:{
-
+        handleItem(item){
+            this.active=item.id
+            this.$router.push(`/admin/${item.id}`)
+        }
     }
 }
 </script>
@@ -33,7 +39,7 @@ export default {
     text-align: left;
     .button {
       color: #fff;
-
+      cursor: pointer;
       display: inline-block;
       height: 40px;
       line-height: 40px;

@@ -36,24 +36,25 @@ export default new Router({
       path: "/admin",
       name: "Admin",
       component: Admin,
+      redirect: "/admin/people",
       children: [
         {
-          path: "/album",
+          path: "album",
           name: "Album",
           component: AdminAlbum
         },
         {
-          path: "/albumEdit",
+          path: "albumEdit",
           name: "AlbumEdit",
           component: AdminAlbumEdit
         },
         {
-          path: "/people",
+          path: "people",
           name: "People",
           component: AdminPeople
         },
         {
-          path: "/album",
+          path: "album",
           name: "Album",
           component: AdminPeopleEdit
         }
