@@ -15,7 +15,11 @@ Vue.use(Vant);
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
+import axios from "axios";
+
 Vue.use(ElementUI);
+
+Vue.prototype.$proxy = axios;
 
 Vue.config.productionTip = false;
 
