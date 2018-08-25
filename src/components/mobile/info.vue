@@ -3,7 +3,12 @@
         <common-header/>
         <div class="info-container-header">
             <div class="info-container-header-img"></div>
-            <div class="info-container-header-msg"></div>
+            <div class="info-container-header-msg">
+                <div class="ct name">yoki</div>
+                <div class="ct id">ID:22</div>
+                <div class="ct weibo">微博：小姐姐微博</div>
+                <div class="ct intro">简介：我是双马尾协会成员的一份子</div>
+            </div>
         </div>
         <div class="info-container-body">
             <div class="info-container-body-item">
@@ -50,6 +55,15 @@ export default {
     &-msg {
       height: 120px;
       background: white;
+      .ct {
+        text-align: left;
+        font-size: 12px;
+        margin-left: 20px;
+        &.name {
+          padding-top: 20px;
+          font-size: 14px;
+        }
+      }
     }
   }
   &-body {
