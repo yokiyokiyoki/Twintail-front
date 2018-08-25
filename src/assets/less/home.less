@@ -13,14 +13,12 @@
         &-boxContainer {
           margin-top: 10px;
           display: flex;
-
           &-box {
             margin-left: 10px;
             height: 160px;
             flex: 1;
             display: flex;
             flex-direction: column;
-
             &-pic {
               flex: 1;
               border: 1px solid #eaeaea;
@@ -194,6 +192,7 @@
 }
 .mobile {
   &.home-container {
+    background: #eaeaea;
     .home-container-body {
       &-top {
         &-carousel {
@@ -209,16 +208,16 @@
           }
         }
         &-boxContainer {
-          margin-top: 10px;
+          padding-top: 10px;
           overflow-x: auto;
           white-space: nowrap;
+          background: white;
           &-box {
             margin-left: 10px;
             height: 120px;
             width: 120px;
             display: inline-flex;
             flex-direction: column;
-
             &-pic {
               flex: 1;
               border: 1px solid #eaeaea;
@@ -233,11 +232,13 @@
         }
       }
       &-bottom {
+        margin-top: 10px;
         .van-tab__pane {
           white-space: nowrap;
           overflow-x: auto;
           overflow-y: hidden;
           height: 260px;
+          background: white;
           .home-container-body-bottom-left-body-card {
             margin-top: 10px;
             height: 240px;
@@ -262,6 +263,7 @@
                 border-top: 1px solid #eaeaea;
                 line-height: 30px;
                 background: white;
+
                 &-left {
                   float: left;
                   margin-left: 15px;
@@ -276,6 +278,67 @@
                   .num {
                     font-size: 14px;
                     margin-left: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+        &-member {
+          margin-top: 10px;
+          padding-bottom: 10px;
+          .title {
+            text-align: left;
+            background: white;
+            color: #ef9cbe;
+            padding: 16px 10px 0 10px;
+          }
+          .home-container-body-top-boxContainer {
+            padding-bottom: 10px;
+          }
+          .home-container-body-top-boxContainer-box {
+            height: 65px;
+            width: 180px;
+            font-size: 14px;
+            cursor: pointer;
+            flex-direction: row;
+            white-space: normal;
+            .box {
+              &-left {
+                width: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .pic {
+                  width: 50px;
+                  height: 50px;
+                  border: 1px solid #eaeaea;
+                  border-radius: 100px;
+                  background-color: rgb(239, 156, 190);
+                }
+              }
+              &-right {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                flex: 1;
+                &-container {
+                  width: 100px;
+                  &-header {
+                    font-size: 14px;
+                    .left {
+                      float: left;
+                    }
+                    .right {
+                      float: right;
+                    }
+                  }
+                  &-body {
+                    font-size: 12px;
+                    text-align: left;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                   }
                 }
               }

@@ -50,6 +50,7 @@ export default {
   height: 46px;
   box-sizing: border-box;
   border-bottom: 1px solid #eaeaea;
+  background: white;
   &-left {
     float: left;
     display: flex;
