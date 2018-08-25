@@ -35,7 +35,7 @@
                 <div class="home-container-body-bottom-member" >
                     <div class="title">双马尾协会成员</div>
                     <div class="home-container-body-top-boxContainer clearfix" >
-                        <div class="home-container-body-top-boxContainer-box" v-for='n in 5' :key='n'>
+                        <div class="home-container-body-top-boxContainer-box" v-for='n in 5' :key='n' @click="$router.push('/info')">
                            <div class="box-left">
                                 <div class="pic"></div>
                             </div>
