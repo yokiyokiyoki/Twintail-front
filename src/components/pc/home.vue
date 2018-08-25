@@ -54,7 +54,6 @@
                                 <div class="box-right-container">
                                     <div class="box-right-container-header clearfix">
                                         <div class="left">yoki</div>
-                                        <div class="right">22</div>
                                     </div>
                                     <div class="box-right-container-body">
                                         我是一个小仙女，有没有小哥哥,，嘤嘤嘤?

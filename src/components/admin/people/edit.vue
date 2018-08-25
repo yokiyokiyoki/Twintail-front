@@ -5,7 +5,7 @@
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
             <el-form-item label="ID">
-                <el-input v-model="form.id"></el-input>
+                <el-input v-model="form.self_ID"></el-input>
             </el-form-item>
             <el-form-item label="微博">
                 <el-input v-model="form.weibo"></el-input>
@@ -26,7 +26,7 @@ export default {
       return {
         form: {
             name: '',
-            id:'',
+            self_ID:'',
             intro:'',
             weibo:''
         }
@@ -34,11 +34,10 @@ export default {
     },
     methods: {
       onSubmit() {
-        this.$proxy.get('/getUser', {
-            params: {
-                id: 2
-            }
-        })
+        if(this.form.name.trim()==''){
+            return
+        }
+        this.$proxy.post('/insertUser', this.form)
         .then(function (response) {
             console.log(response);
         })
