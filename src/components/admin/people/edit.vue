@@ -34,9 +34,9 @@ export default {
     },
     methods: {
       onSubmit() {
-        this.$proxy.get('/api/getUser', {
+        this.$proxy.get('/getUser', {
             params: {
-                id: 1
+                id: 2
             }
         })
         .then(function (response) {
