@@ -34,6 +34,20 @@ export default {
     },
     methods: {
       onSubmit() {
+        this.$proxy.get('/api/getUser', {
+            params: {
+                id: 1
+            }
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        }); 
         console.log('submit!');
       }
     }

@@ -10,14 +10,9 @@ module.exports = {
     assetsSubDirectory: "static",
     assetsPublicPath: "/",
     proxyTable: {
-      paths: [],
-      options: {
-        target: "http://localhost:7001/",
-        changeOrigin: true,
-        cookieDomainRewrite: ""
-        // pathRewrite: {
-        //     '^/api': ''
-        // }
+      "/": {
+        target: "http://localhost:7001", // 接口的域名
+        changeOrigin: true // 如果接口跨域，需要进行这个参数配置
       }
     },
 
