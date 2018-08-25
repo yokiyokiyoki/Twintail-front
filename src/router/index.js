@@ -6,6 +6,11 @@ import PCDetail from "@/components/pc/detail";
 import MOBILEHome from "@/components/mobile/home";
 import MOBILEDetail from "@/components/mobile/detail";
 import MOBILEInfo from "@/components/mobile/info";
+import Admin from "@/components/admin";
+import AdminAlbum from "@/components/admin/album";
+import AdminAlbumEdit from "@/components/admin/album/edit";
+import AdminPeople from "@/components/admin/people";
+import AdminPeopleEdit from "@/components/admin/people/edit";
 
 Vue.use(Router);
 
@@ -26,6 +31,33 @@ export default new Router({
       path: "/detail",
       name: "Detail",
       component: IsPC() ? PCDetail : MOBILEDetail
+    },
+    {
+      path: "/admin",
+      name: "Admin",
+      component: Admin,
+      children: [
+        {
+          path: "/album",
+          name: "Album",
+          component: AdminAlbum
+        },
+        {
+          path: "/albumEdit",
+          name: "AlbumEdit",
+          component: AdminAlbumEdit
+        },
+        {
+          path: "/people",
+          name: "People",
+          component: AdminPeople
+        },
+        {
+          path: "/album",
+          name: "Album",
+          component: AdminPeopleEdit
+        }
+      ]
     }
   ]
 });
