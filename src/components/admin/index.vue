@@ -5,7 +5,7 @@
                 {{item.name}}
             </div>
         </div>
-        <router-view></router-view>
+        <router-view class="admin-container-body"></router-view>
     </div>
 </template>
 <script>
@@ -53,6 +53,16 @@ export default {
         background: #505050;
       }
     }
+  }
+  &-body {
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #f6f6f6;
+    font-size: 13px;
+    color: #444;
   }
 }
 </style>

@@ -54,8 +54,8 @@ export default new Router({
           component: AdminPeople
         },
         {
-          path: "album",
-          name: "Album",
+          path: "peopleEdit",
+          name: "PeopleEdit",
           component: AdminPeopleEdit
         }
       ]
