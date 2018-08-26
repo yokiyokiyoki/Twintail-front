@@ -35,17 +35,17 @@
                 <div class="home-container-body-bottom-member" >
                     <div class="title">双马尾协会成员</div>
                     <div class="home-container-body-top-boxContainer clearfix" >
-                        <div class="home-container-body-top-boxContainer-box" v-for='n in 5' :key='n' @click="$router.push('/info')">
+                        <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in peopleList' :key='index' @click="jumpInfo(item)">
                            <div class="box-left">
                                 <div class="pic"></div>
                             </div>
                             <div class="box-right">
                                 <div class="box-right-container">
                                     <div class="box-right-container-header clearfix">
-                                        <div class="left">yoki</div>
+                                        <div class="left">{{item.name}}</div>
                                     </div>
                                     <div class="box-right-container-body">
-                                        我是一个小仙女，有没有小哥哥,，嘤嘤嘤?
+                                        {{item.intro}}
                                     </div>
                                 </div>
                             </div>
@@ -65,10 +65,24 @@ export default {
     data(){
         return{
             menulist:['最新','本周热门','热门推荐'],
-            menuActive:'最新'
+            menuActive:'最新',
+            peopleList:[]
         }
     },
+    mounted(){
+        this.getAllUsers()
+    },
     methods:{
+        jumpInfo(item){
+            this.$router.push({name:'Info',params:{id:item.id}})
+        },
+        getAllUsers(){
+            this.$proxy.get('/getAllUsers').then(res=>{
+                console.log(res)
+                this.peopleList=res.data.data
+                console.log(this)
+            })
+        },
         handleClickItem(item){
             console.log(item)
             this.$router.push('/detail')

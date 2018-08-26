@@ -3,11 +3,11 @@
         <common-header/>
         <div class="info-container-header">
             <div class="info-container-header-img"></div>
-            <div class="info-container-header-msg">
-                <div class="ct name">yoki</div>
-                <div class="ct id">ID:22</div>
-                <div class="ct weibo">微博：小姐姐微博</div>
-                <div class="ct intro">简介：我是双马尾协会成员的一份子</div>
+            <div class="info-container-header-msg" v-if='info.name'>
+                <div class="ct name">{{info.name}}</div>
+                <div class="ct id">ID:{{info.self_ID}}</div>
+                <div class="ct weibo">微博：{{info.weibo}}</div>
+                <div class="ct intro">简介：{{info.weibo}}</div>
             </div>
         </div>
         <div class="info-container-body">
@@ -37,11 +37,26 @@ export default {
     components:{
         commonHeader
     },
+    data(){
+      return{
+        info:{}
+      }
+    },
+    mounted(){
+      this.getDetail()
+    },
     methods:{
         handleClickItem(item){
 
+        },
+        getDetail(){
+          this.$proxy.get('/getUser',{params:{id:this.$route.params.id}})
+          .then( (res)=> {
+              this.info=res.data.data
+              console.log(res);
+          })
         }
-    }
+    },
 }
 </script> 
 <style lang="less" scoped>

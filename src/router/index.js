@@ -23,7 +23,7 @@ export default new Router({
       component: IsPC() ? PCHome : MOBILEHome
     },
     {
-      path: "/info",
+      path: "/info/:id",
       name: "Info",
       component: IsPC() ? PCInfo : MOBILEInfo
     },
