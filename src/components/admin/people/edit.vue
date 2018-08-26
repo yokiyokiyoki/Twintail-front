@@ -28,7 +28,7 @@
                 <el-button type="primary" @click="onSubmit">立即创建</el-button>
                 <el-button @click="$router.push('/admin/people')">取消</el-button>
             </el-form-item>
-            </el-form>
+        </el-form>
     </div>
 </template>
 <script>
@@ -46,9 +46,6 @@ export default {
       }
     },
     methods: {
-        update(e){
-            console.log(e)
-        },
         handleAvatarSuccess(res, file) {
         this.imageUrl = URL.createObjectURL(file.raw);
         this.imgFile=file.raw
@@ -64,7 +61,8 @@ export default {
         if (!isLt2M) {
           this.$message.error('上传头像图片大小不能超过 2MB!');
         }
-        return isJPG && isLt2M;
+        // return isJPG && isLt2M;
+        return isLt2M
       },
       onSubmit() {
         if(this.form.name.trim()==''){
