@@ -43,7 +43,26 @@ export default {
             console.log(this.imageUrl,file)
         },
         onSubmit(){
-
+            if(this.form.content.trim()==''){
+                return
+            }
+            if(!this.imgFile){
+                return
+            }
+            let param = new FormData() // 创建form对象
+            param.append('photo_url',this.imgFile)
+            for(let i in this.form){
+                param.append(i,this.form[i])
+            }
+            console.log(param)
+            let config = {
+                headers: {'Content-Type': 'multipart/form-data'}
+            }
+            this.$proxy.post('/insertAdv', param,config)
+            .then(function (response) {
+                console.log(response);
+            })
+            console.log('submit!');
         }
     }
 }

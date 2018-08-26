@@ -9,9 +9,11 @@
                     </van-swipe>
                 </div>
                 <div class="home-container-body-top-boxContainer clearfix" >
-                    <div class="home-container-body-top-boxContainer-box" v-for='n in 5' :key='n'>
-                        <div class="home-container-body-top-boxContainer-box-pic"></div>
-                        <div class="home-container-body-top-boxContainer-box-txt">我是广告词</div>
+                    <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
+                        <div class="home-container-body-top-boxContainer-box-pic">
+                            <img :src="item.photo_url" alt="">
+                        </div>
+                        <div class="home-container-body-top-boxContainer-box-txt">{{item.content}}</div>
                     </div>
                 </div>
             </div>
@@ -66,11 +68,13 @@ export default {
         return{
             menulist:['最新','本周热门','热门推荐'],
             menuActive:'最新',
-            peopleList:[]
+            peopleList:[],
+            advList:[]
         }
     },
     mounted(){
         this.getAllUsers()
+        this.getAllAdvs()
     },
     methods:{
         jumpInfo(item){
@@ -80,7 +84,12 @@ export default {
             this.$proxy.get('/getAllUsers').then(res=>{
                 console.log(res)
                 this.peopleList=res.data.data
-                console.log(this)
+            })
+        },
+        getAllAdvs(){
+            this.$proxy.get('/getAllAdvs').then(res=>{
+                console.log(res)
+                this.advList=res.data.data
             })
         },
         handleClickItem(item){
