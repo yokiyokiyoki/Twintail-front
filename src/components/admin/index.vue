@@ -13,7 +13,7 @@ export default {
     data(){
         return{
             active:'people',
-            menu:[{name:'小姐姐',id:'people'},{name:'写真集',id:'album'}]
+            menu:[{name:'小姐姐',id:'people'},{name:'写真集',id:'album'},{name:'广告位',id:'adv'}]
         }
     },
     methods:{

@@ -11,6 +11,8 @@ import AdminAlbum from "@/components/admin/album";
 import AdminAlbumEdit from "@/components/admin/album/edit";
 import AdminPeople from "@/components/admin/people";
 import AdminPeopleEdit from "@/components/admin/people/edit";
+import AdminAdv from "@/components/admin/adv";
+import AdminAdvEdit from "@/components/admin/adv/edit";
 
 Vue.use(Router);
 
@@ -57,6 +59,16 @@ export default new Router({
           path: "peopleEdit",
           name: "PeopleEdit",
           component: AdminPeopleEdit
+        },
+        {
+          path: "adv",
+          name: "Adv",
+          component: AdminAdv
+        },
+        {
+          path: "advEdit",
+          name: "AdvEdit",
+          component: AdminAdvEdit
         }
       ]
     }

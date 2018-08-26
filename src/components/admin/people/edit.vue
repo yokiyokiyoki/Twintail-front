@@ -13,6 +13,17 @@
             <el-form-item label="简介">
                 <el-input v-model="form.intro"></el-input>
             </el-form-item>
+            <el-form-item label="头像">
+                <el-upload
+                class="avatar-uploader"
+                action="https://jsonplaceholder.typicode.com/posts/"
+                :show-file-list="false"
+                :on-success="handleAvatarSuccess"
+                :before-upload="beforeAvatarUpload">
+                <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
+            </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">立即创建</el-button>
                 <el-button @click="$router.push('/admin/people')">取消</el-button>
@@ -24,6 +35,8 @@
 export default {
     data() {
       return {
+        imageUrl: '',
+        imgFile:'',
         form: {
             name: '',
             self_ID:'',
@@ -33,20 +46,43 @@ export default {
       }
     },
     methods: {
+        update(e){
+            console.log(e)
+        },
+        handleAvatarSuccess(res, file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+        this.imgFile=file.raw
+        console.log(this.imageUrl,file)
+      },
+      beforeAvatarUpload(file) {
+        const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 2;
+
+        // if (!isJPG) {
+        //   this.$message.error('上传头像图片只能是 JPG 格式!');
+        // }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
+      },
       onSubmit() {
         if(this.form.name.trim()==''){
             return
         }
-        this.$proxy.post('/insertUser', this.form)
+        let param = new FormData() // 创建form对象
+        param.append('tx_pic',this.imgFile)
+        for(let i in this.form){
+            param.append(i,this.form[i])
+        }
+        console.log(param)
+        let config = {
+            headers: {'Content-Type': 'multipart/form-data'}
+        }
+        this.$proxy.post('/insertUser', param,config)
         .then(function (response) {
             console.log(response);
         })
-        .catch(function (error) {
-            console.log(error);
-        })
-        .then(function () {
-            // always executed
-        }); 
         console.log('submit!');
       }
     }
@@ -55,5 +91,16 @@ export default {
 <style lang="less" scoped>
 .people-edit-container {
   padding: 20px;
+  .avatar-uploader {
+    text-align: left;
+    .avatar-uploader-icon {
+      font-size: 28px;
+      color: #8c939d;
+      width: 178px;
+      height: 178px;
+      line-height: 178px;
+      text-align: center;
+    }
+  }
 }
 </style>
