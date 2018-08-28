@@ -14,7 +14,7 @@
                 <li v-for="(item,index) in list" :key='index' style="height: 100px;
                 border-bottom: 1px solid #eaeaea;
                 line-height: 100px;">
-                  <img :src="item.photo_url" >
+                  <img :src="item.photo_url" style="height:100%;width:100%;">
                 </li>
                 </ul>
             </div>
@@ -48,7 +48,6 @@ export default {
       .then( (res)=> {
           this.list=res.data.data.photo
           this.info=res.data.data.info
-          console.log(res,this.list);
       })
     },
   }
