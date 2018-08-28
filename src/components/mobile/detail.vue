@@ -3,9 +3,10 @@
         <common-header/>
         <div class="detail-container-body">
             <div class="detail-container-body-top">
-              <div class="touxiang"></div>
-              <div class="name">写真集：{{info.name}}</div>
-              <div class="weibo">查看:{{info.view}}</div>
+              <div class="touxiang"><img :src="info.tx_pic" ></div>
+              <div class="name">{{info.username}}</div>
+              <div class="name">写真集：{{info.album_name}}</div>
+              <div class="weibo">微博:{{info.weibo}}</div>
             </div>
             <div class="detail-container-body-bottom">
                 <ul
@@ -46,7 +47,7 @@ export default {
       this.$proxy.get('/getAlbumDetail',{params:{id:this.$route.params.id}})
       .then( (res)=> {
           this.list=res.data.data.photo
-          this.info=res.data.data.album
+          this.info=res.data.data.info
           console.log(res,this.list);
       })
     },

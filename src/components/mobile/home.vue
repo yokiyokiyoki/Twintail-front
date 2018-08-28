@@ -39,12 +39,14 @@
                     <div class="home-container-body-top-boxContainer clearfix" >
                         <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in peopleList' :key='index' @click="jumpInfo(item)">
                            <div class="box-left">
-                                <div class="pic"></div>
+                                <div class="pic">
+                                    <img :src="item.tx_pic" style="height:100%;width:100%;border-radius:100%;">
+                                </div>
                             </div>
                             <div class="box-right">
                                 <div class="box-right-container">
                                     <div class="box-right-container-header clearfix">
-                                        <div class="left">{{item.name}}</div>
+                                        <div class="left">{{item.username}}</div>
                                     </div>
                                     <div class="box-right-container-body">
                                         {{item.intro}}
@@ -72,9 +74,10 @@ export default {
             advList:[]
         }
     },
-    mounted(){
+    created(){
         this.getAllUsers()
         this.getAllAdvs()
+        this.getAllAlbums()
     },
     methods:{
         jumpInfo(item){
@@ -90,6 +93,12 @@ export default {
             this.$proxy.get('/getAllAdvs').then(res=>{
                 console.log(res)
                 this.advList=res.data.data
+            })
+        },
+        getAllAlbums(){
+            this.$proxy.get('/getAllAlbums').then(res=>{
+                console.log(res)
+                
             })
         },
         handleClickItem(item){
