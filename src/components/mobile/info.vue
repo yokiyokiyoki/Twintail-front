@@ -2,26 +2,30 @@
     <div class="mobile info-container">
         <common-header/>
         <div class="info-container-header">
-            <div class="info-container-header-img"></div>
-            <div class="info-container-header-msg" v-if='info.name'>
-                <div class="ct name">{{info.name}}</div>
-                <div class="ct id">ID:{{info.self_ID}}</div>
-                <div class="ct weibo">微博：{{info.weibo}}</div>
-                <div class="ct intro">简介：{{info.weibo}}</div>
+            <div class="info-container-header-img" v-if='info.people'>
+                <img :src="info.people.tx_pic"  >
+            </div>
+            <div class="info-container-header-msg" v-if='info.people'>
+                <div class="ct name">{{info.people.username}}</div>
+                <div class="ct id">ID:{{info.people.self_ID}}</div>
+                <div class="ct weibo">微博：{{info.people.weibo}}</div>
+                <div class="ct intro">简介：{{info.people.intro}}</div>
             </div>
         </div>
         <div class="info-container-body">
             <div class="info-container-body-item">
                 <div class="title">写真集</div>
                 <div class="card-container">
-                    <div class="card" v-for='n in 8' :key='n' @click="handleClickItem(n)">
+                    <div class="card" v-for='(item,index) in info.albums' :key='index' @click="handleClickItem(item)">
                         <div class="box">
-                            <div class="box-pic"></div>
+                            <div class="box-pic">
+                              <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo.length'>
+                            </div>
                             <div class="box-bottom clearfix">
-                                <div class="box-bottom-left">小姐姐</div>
+                                <div class="box-bottom-left">{{item.info.album_name}}</div>
                                 <div class="box-bottom-right">
                                     <i class="el-icon-star-on"></i>
-                                    <span class="num">200</span>
+                                    <span class="num">{{item.info.view}}</span>
                                 </div>
                             </div>
                         </div>
@@ -47,13 +51,14 @@ export default {
     },
     methods:{
         handleClickItem(item){
-
+          console.log(item)
+          this.$router.push(`/detail/${item.info.id}`)
         },
         getDetail(){
           this.$proxy.get('/getUser',{params:{id:this.$route.params.id}})
           .then( (res)=> {
               this.info=res.data.data
-              console.log(res);
+              console.log(this.info);
           })
         }
     },

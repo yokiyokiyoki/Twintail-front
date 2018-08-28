@@ -122,13 +122,6 @@ export default {
         handleClickMenu(item){
             console.log(item)
             this.activeItem=item
-        },
-        handleClickMember(item){
-            this.$router.push('/info')
-        },
-        handleCarousel(item){
-            console.log(item)
-            this.$router.push('/detail')
         }
     }
 }
