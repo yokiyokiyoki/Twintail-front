@@ -77,7 +77,7 @@ export default {
     data(){
         return{
             menulist:[{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3}],
-            menuActive:0,
+            menuActive:1,
             peopleList:[],
             advList:[],
             albumLists:[]
@@ -94,17 +94,14 @@ export default {
     computed:{
         activeAlbum(){
             let res=this.albumLists.filter((item,index)=>{
-                
-                return item.info.status==this.menuActive+1
+                return item.info.status==this.menuActive
             })
             return res
         },
         bannerList(){
             let res=this.albumLists.filter((item,index)=>{
-                console.log(item.info)
                 return item.info.is_banner==1
             })
-            console.log(res)
             return res
         }
     },
@@ -139,7 +136,7 @@ export default {
         },
         handleClickMenu(item){
             console.log(item)
-            this.activeItem=item
+            this.menuActive=item.id
         },
         handleCarousel(item){
 
