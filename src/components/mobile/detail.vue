@@ -34,18 +34,22 @@ export default {
       disabled: false
     };
   },
-  getDetail(){
-    this.$proxy.get('/getAlbumDetail',{params:{id:this.$route.params.id}})
-    .then( (res)=> {
-        this.info=res.data.data
-        console.log(res);
-    })
+  mounted(){
+    this.getDetail()
   },
+  
   directives: {
     WaterfallLower: Waterfall('lower')
   },
 
   methods: {
+    getDetail(){
+      this.$proxy.get('/getAlbumDetail',{params:{id:this.$route.params.id}})
+      .then( (res)=> {
+          this.info=res.data.data
+          console.log(res);
+      })
+    },
     loadMore() {
       this.disabled = true;
       setTimeout(() => {
