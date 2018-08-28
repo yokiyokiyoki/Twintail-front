@@ -5,7 +5,9 @@
             <div class="home-container-body-top">
                 <div class="home-container-body-top-carousel">
                     <van-swipe :autoplay="3000">
-                        <van-swipe-item v-for='item in 4' :key='item'>{{item}}</van-swipe-item>
+                        <van-swipe-item v-for='(item,index) in bannerList' :key='index'>
+                            <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo[0]'>
+                        </van-swipe-item>
                     </van-swipe>
                 </div>
                 <div class="home-container-body-top-boxContainer clearfix" >
@@ -22,7 +24,9 @@
                     <van-tab v-for="(item,index) in menulist" :title="item.name"  :key='index'>
                         <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index' @click="handleClickItem(item)" >
                             <div class="box">
-                                <div class="box-pic"></div>
+                                <div class="box-pic">
+                                    <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo[0]'>
+                                </div>
                                 <div class="box-bottom clearfix">
                                     <div class="box-bottom-left">{{item.info.album_name}}</div>
                                     <div class="box-bottom-right">
@@ -83,10 +87,17 @@ export default {
     computed:{
         activeAlbum(){
             let res=this.albumLists.filter((item,index)=>{
-                console.log(item.info.status,this.menuActive)
+                
                 return item.info.status==this.menuActive+1
             })
-            console.log(res,this.menuActive)
+            return res
+        },
+        bannerList(){
+            let res=this.albumLists.filter((item,index)=>{
+                console.log(item.info)
+                return item.info.is_banner==1
+            })
+            console.log(res)
             return res
         }
     },
