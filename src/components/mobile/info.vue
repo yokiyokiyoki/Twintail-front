@@ -55,7 +55,7 @@ export default {
           this.$router.push(`/detail/${item.info.id}`)
         },
         getDetail(){
-          this.$proxy.get('/getUser',{params:{id:this.$route.params.id}})
+          this.$proxy.get('/api/getUser',{params:{id:this.$route.params.id}})
           .then( (res)=> {
               this.info=res.data.data
               console.log(this.info);

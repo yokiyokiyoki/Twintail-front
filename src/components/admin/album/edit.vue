@@ -82,7 +82,7 @@ export default {
             console.log(file);
         },
         getAllUsers(){
-            this.$proxy.get('/getAllUsers').then(res=>{
+            this.$proxy.get('/api/getAllUsers').then(res=>{
                 this.peopleList=res.data.data
             })
         },
@@ -119,7 +119,7 @@ export default {
             let config = {
                 headers: {'Content-Type': 'multipart/form-data'}
             }
-            this.$proxy.post('/insertAlbum', param,config)
+            this.$proxy.post('/api/insertAlbum', param,config)
             .then(function (response) {
                 
                 console.log(response);

@@ -113,19 +113,19 @@ export default {
             this.$router.push({name:'Info',params:{id:item.id}})
         },
         getAllUsers(){
-            this.$proxy.get('/getAllUsers').then(res=>{
+            this.$proxy.get('/api/getAllUsers').then(res=>{
                 console.log(res)
                 this.peopleList=res.data.data
             })
         },
         getAllAdvs(){
-            this.$proxy.get('/getAllAdvs').then(res=>{
+            this.$proxy.get('/api/getAllAdvs').then(res=>{
                 console.log(res)
                 this.advList=res.data.data
             })
         },
         getAllAlbums(){
-            this.$proxy.get('/getAllAlbums').then(res=>{
+            this.$proxy.get('/api/getAllAlbums').then(res=>{
                 console.log(res)
                 this.albumLists=res.data.data
             })

@@ -48,7 +48,7 @@ export default {
             this.activeImg=item.photo_url
         },
         getDetail(){
-            this.$proxy.get('/getAlbumDetail',{params:{id:this.$route.params.id}})
+            this.$proxy.get('/api/getAlbumDetail',{params:{id:this.$route.params.id}})
             .then( (res)=> {
                 this.list=res.data.data.photo
                 this.info=res.data.data.info

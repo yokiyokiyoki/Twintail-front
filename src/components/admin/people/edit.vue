@@ -94,7 +94,7 @@ export default {
         let config = {
             headers: {'Content-Type': 'multipart/form-data'}
         }
-        this.$proxy.post('/insertUser', param,config)
+        this.$proxy.post('/api/insertUser', param,config)
         .then(function (response) {
             console.log(response);
         })
