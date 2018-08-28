@@ -46,7 +46,7 @@ export default {
         info:{}
       }
     },
-    mounted(){
+    created(){
       this.getDetail()
     },
     methods:{

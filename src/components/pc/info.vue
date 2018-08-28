@@ -3,23 +3,27 @@
         <common-header/>
         <div class="info-container-body">
             <div class="info-container-body-top">
-                <div class="info-container-body-top-left"></div>
-                <div class="info-container-body-top-right">
-                    <div class="info-container-body-top-right-name">双马尾小姐姐</div>
-                    <div class="info-container-body-top-right-text">ID:22</div>
-                    <div class="info-container-body-top-right-text">微博:小姐姐微博</div>
-                    <div class="info-container-body-top-right-text">简介:我是双马尾协会成员的一份子</div>
+                <div class="info-container-body-top-left" v-if='info.people'>
+                    <img :src="info.people.tx_pic"  >
+                </div>
+                <div class="info-container-body-top-right" v-if='info.people'>
+                    <div class="info-container-body-top-right-name">{{info.people.username}}</div>
+                    <div class="info-container-body-top-right-text">ID:{{info.people.self_ID}}</div>
+                    <div class="info-container-body-top-right-text">微博:{{info.people.weibo}}</div>
+                    <div class="info-container-body-top-right-text">简介：{{info.people.intro}}</div>
                 </div>
             </div>
             <div class="info-container-body-middle clearfix">
-                <div class="info-container-body-middle-box" v-for='n in 5' :key='n' @click="handleItem(n)">
+                <div class="info-container-body-middle-box" v-for='(item,index) in info.albums' :key='index' @click="handleClickItem(item)">
                     <div class="info-container-body-middle-box-container">
-                        <div class="info-container-body-middle-box-container-pic"></div>
+                        <div class="info-container-body-middle-box-container-pic">
+                            <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo.length'>
+                        </div>
                         <div class="info-container-body-middle-box-container-bottom clearfix">
-                            <div class="info-container-body-middle-box-container-bottom-left">小姐姐</div>
+                            <div class="info-container-body-middle-box-container-bottom-left">{{item.info.album_name}}</div>
                             <div class="info-container-body-middle-box-container-bottom-right">
                                 <i class="el-icon-star-on"></i>
-                                <span class="num">200</span>
+                                <span class="num">{{item.info.view}}</span>
                             </div>
                         </div>
                     </div>
@@ -34,11 +38,26 @@ export default {
     components:{
         commonHeader
     },
+    data(){
+      return{
+        info:{}
+      }
+    },
+    created(){
+      this.getDetail()
+    },
     methods:{
-        handleItem(item){
-            this.$router.push('/detail')
+        handleClickItem(item){
+          this.$router.push(`/detail/${item.info.id}`)
+        },
+        getDetail(){
+          this.$proxy.get('/getUser',{params:{id:this.$route.params.id}})
+          .then( (res)=> {
+              this.info=res.data.data
+              console.log(this.info);
+          })
         }
-    }
+    },
 }
 </script>
 
