@@ -66,6 +66,23 @@ export default {
       },
       onSubmit() {
         if(this.form.name.trim()==''){
+            this.$message.error('请填写小姐姐名字');
+            return
+        }
+        if(this.form.self_ID.trim()==''){
+            this.$message.error('请填写小姐姐ID');
+            return
+        }
+        if(this.form.intro.trim()==''){
+            this.$message.error('请填写小姐姐介绍');
+            return
+        }
+        if(this.form.weibo.trim()==''){
+            this.$message.error('请填写小姐姐微博');
+            return
+        }
+        if(!this.imgFile){
+            this.$message.error('请上传头像');
             return
         }
         let param = new FormData() // 创建form对象

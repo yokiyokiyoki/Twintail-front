@@ -44,9 +44,11 @@ export default {
         },
         onSubmit(){
             if(this.form.content.trim()==''){
+                this.$message.error('请填写广告词');
                 return
             }
             if(!this.imgFile){
+                this.$message.error('请上传图片');
                 return
             }
             let param = new FormData() // 创建form对象

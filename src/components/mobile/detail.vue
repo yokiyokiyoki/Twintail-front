@@ -4,8 +4,8 @@
         <div class="detail-container-body">
             <div class="detail-container-body-top">
               <div class="touxiang"></div>
-              <div class="name">yokiyoki</div>
-              <div class="weibo">weibo</div>
+              <div class="name">写真集：yokiyoki</div>
+              <div class="weibo">微博:..</div>
             </div>
             <div class="detail-container-body-bottom">
                 <ul
@@ -25,16 +25,22 @@
 import { Waterfall } from 'vant';
 import commonHeader from './header'
 export default {
-    components:{
-        commonHeader
-    },
-    data() {
+  components:{
+    commonHeader
+  },
+  data() {
     return {
       list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
       disabled: false
     };
   },
-
+  getDetail(){
+    this.$proxy.get('/getAlbumDetail',{params:{id:this.$route.params.id}})
+    .then( (res)=> {
+        this.info=res.data.data
+        console.log(res);
+    })
+  },
   directives: {
     WaterfallLower: Waterfall('lower')
   },

@@ -30,7 +30,7 @@ export default new Router({
       component: IsPC() ? PCInfo : MOBILEInfo
     },
     {
-      path: "/detail",
+      path: "/detail/:id",
       name: "Detail",
       component: IsPC() ? PCDetail : MOBILEDetail
     },

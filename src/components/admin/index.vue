@@ -35,7 +35,7 @@ export default {
     height: 40px;
     background: #383838;
     color: #fff;
-    z-index: 100000;
+    z-index: 10;
     text-align: left;
     .button {
       color: #fff;
