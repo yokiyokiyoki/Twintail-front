@@ -25,7 +25,7 @@
                         <!-- <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='最新'}" style="flex:1;" @click="handleClickItem('最新')">最新</div>
                         <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='本周热门'}" style="flex:1;" @click="handleClickItem('本周热门')">本周热门</div>
                         <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='热门推荐'}" style="flex:1;" @click="handleClickItem('热门推荐')">热门推荐</div> -->
-                        <div class="home-container-body-bottom-left-header-item" v-for='(item,index) in menulist' style="flex:1;" :class="{'active':menuActive==item.id}" @click="handleClickMenu(item)" :key="index">{{item}}</div>
+                        <div class="home-container-body-bottom-left-header-item" v-for='(item,index) in menulist' style="flex:1;" :class="{'active':menuActive==item.id}" @click="handleClickMenu(item)" :key="index">{{item.name}}</div>
                     </div>
                     <div class="home-container-body-bottom-left-body">
                         <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index' @click="handleClickItem(item)">
@@ -51,7 +51,7 @@
                     <div class="home-container-body-bottom-right-body">
                         <div class="box" v-for='(item,index) in peopleList' :key='index' @click="jumpInfo(item)">
                             <div class="box-left">
-                                <img :src="item.tx_pic" style="height:100%;width:100%;border-radius:100%;">
+                                <img class="pic" :src="item.tx_pic" style="border-radius:100%;">
                             </div>
                             <div class="box-right">
                                 <div class="box-right-container">
