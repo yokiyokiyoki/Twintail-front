@@ -13,7 +13,7 @@
                 <div class="home-container-body-top-boxContainer clearfix" >
                     <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
                         <div class="home-container-body-top-boxContainer-box-pic">
-                            <img :src="item.photo_url">
+                            <img :src="item.photo_url" style="height:100%;width:100%;">
                         </div>
                         <div class="home-container-body-top-boxContainer-box-txt">{{item.content}}</div>
                     </div>
@@ -97,7 +97,6 @@ export default {
                 console.log(item.info)
                 return item.info.is_banner==1
             })
-            console.log(res)
             return res
         }
     },
