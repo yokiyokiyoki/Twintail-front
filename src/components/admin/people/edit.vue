@@ -2,7 +2,7 @@
     <div class="people-edit-container">
         <el-form ref="form" :model="form" label-width="80px">
             <el-form-item label="小姐姐">
-                <el-input v-model="form.name"></el-input>
+                <el-input v-model="form.username"></el-input>
             </el-form-item>
             <el-form-item label="ID">
                 <el-input v-model="form.self_ID"></el-input>
@@ -38,7 +38,7 @@ export default {
         imageUrl: '',
         imgFile:'',
         form: {
-            name: '',
+            username: '',
             self_ID:'',
             intro:'',
             weibo:''

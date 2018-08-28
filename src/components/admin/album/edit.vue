@@ -2,7 +2,7 @@
     <div class="album-edit-container">
         <el-form ref="form" :model="form" label-width="80px">
             <el-form-item label="写真集名">
-                <el-input v-model="form.name"></el-input>
+                <el-input v-model="form.album_name"></el-input>
             </el-form-item>
             <el-form-item label="属于">
                 <el-select v-model="form.people_id" placeholder="请选择">
@@ -62,7 +62,7 @@ export default {
             imgFile:'',
             form:{
                 people_id:'',
-                name:'',
+                album_name:'',
                 status:0,
                 is_banner:false,
             },
