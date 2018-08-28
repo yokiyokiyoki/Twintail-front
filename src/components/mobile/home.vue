@@ -11,7 +11,7 @@
                 <div class="home-container-body-top-boxContainer clearfix" >
                     <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
                         <div class="home-container-body-top-boxContainer-box-pic">
-                            <img :src="item.photo_url" alt="">
+                            <img :src="item.photo_url">
                         </div>
                         <div class="home-container-body-top-boxContainer-box-txt">{{item.content}}</div>
                     </div>
@@ -19,15 +19,15 @@
             </div>
             <div class="home-container-body-bottom">
                 <van-tabs v-model="menuActive" class="card">
-                    <van-tab v-for="(item,index) in menulist" :title="item" :key='index'>
-                        <div class="home-container-body-bottom-left-body-card" v-for='n in 8' :key='n' @click="handleClickItem(n)">
+                    <van-tab v-for="(item,index) in menulist" :title="item.name"  :key='index'>
+                        <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index' @click="handleClickItem(item)" >
                             <div class="box">
                                 <div class="box-pic"></div>
                                 <div class="box-bottom clearfix">
-                                    <div class="box-bottom-left">小姐姐</div>
+                                    <div class="box-bottom-left">{{item.info.album_name}}</div>
                                     <div class="box-bottom-right">
                                         <i class="el-icon-star-on"></i>
-                                        <span class="num">200</span>
+                                        <span class="num">{{item.info.view}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -68,10 +68,11 @@ export default {
     },
     data(){
         return{
-            menulist:['最新','本周热门','热门推荐'],
-            menuActive:'最新',
+            menulist:[{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3}],
+            menuActive:0,
             peopleList:[],
-            advList:[]
+            advList:[],
+            albumLists:[]
         }
     },
     created(){
@@ -79,7 +80,20 @@ export default {
         this.getAllAdvs()
         this.getAllAlbums()
     },
+    computed:{
+        activeAlbum(){
+            let res=this.albumLists.filter((item,index)=>{
+                console.log(item.info.status,this.menuActive)
+                return item.info.status==this.menuActive+1
+            })
+            console.log(res,this.menuActive)
+            return res
+        }
+    },
     methods:{
+        changeMunu(item){
+            console.log(item)
+        },
         jumpInfo(item){
             this.$router.push({name:'Info',params:{id:item.id}})
         },
@@ -98,12 +112,12 @@ export default {
         getAllAlbums(){
             this.$proxy.get('/getAllAlbums').then(res=>{
                 console.log(res)
-                
+                this.albumLists=res.data.data
             })
         },
         handleClickItem(item){
             console.log(item)
-            this.$router.push('/detail')
+            this.$router.push(`/detail/${item.info.id}`)
         },
         handleClickMenu(item){
             console.log(item)
