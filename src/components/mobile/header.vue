@@ -17,7 +17,7 @@
         show-cancel-button
         :before-close="beforeClose"
         >
-        <van-search placeholder="请输入搜索关键词" v-model="search" />
+        <van-search placeholder="请输入搜索的小姐姐" v-model="search" />
         </van-dialog>
     </div>
     
