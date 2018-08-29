@@ -62,6 +62,10 @@ export default {
             }
             this.$proxy.post('/api/insertAdv', param,config)
             .then(function (response) {
+                this.$message({
+                    message: '恭喜你，添加成功',
+                    type: 'success'
+                });
                 console.log(response);
             })
             console.log('submit!');
