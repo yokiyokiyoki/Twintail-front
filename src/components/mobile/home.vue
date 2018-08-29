@@ -72,7 +72,7 @@ export default {
     },
     data(){
         return{
-            menulist:[{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3}],
+            menulist:[{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3},{name:'双马尾协会成员专区',id:4}],
             menuActive:0,
             peopleList:[],
             advList:[],
