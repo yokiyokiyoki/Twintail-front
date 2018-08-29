@@ -115,7 +115,10 @@ export default {
         getAllUsers(){
             this.$proxy.get('/api/getAllUsers').then(res=>{
                 console.log(res)
-                this.peopleList=res.data.data
+                this.peopleList=res.data.data.filter((item,index)=>{
+                    //展示协会成员
+                    return item.is_member==1
+                })
             })
         },
         getAllAdvs(){
