@@ -130,7 +130,7 @@ export default {
                     this.$message.error(res.data.message)
                 }
                 
-                console.log(response);
+                console.log(res);
             })
             console.log('submit!');
         }
