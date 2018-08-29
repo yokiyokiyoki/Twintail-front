@@ -4,7 +4,7 @@
         <div class="info-container-body">
             <div class="info-container-body-top">
                 <div class="info-container-body-top-left" v-if='info.people'>
-                    <img :src="info.people.tx_pic"  >
+                    <img :src="info.people.tx_pic" style="height:100%;width:100%;" >
                 </div>
                 <div class="info-container-body-top-right" v-if='info.people'>
                     <div class="info-container-body-top-right-name">{{info.people.username}}</div>

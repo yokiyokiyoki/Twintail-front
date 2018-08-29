@@ -3,7 +3,7 @@
         <common-header/>
         <div class="info-container-header">
             <div class="info-container-header-img" v-if='info.people'>
-                <img :src="info.people.tx_pic"  >
+                <img :src="info.people.tx_pic"  style="height:100%;width:100%;">
             </div>
             <div class="info-container-header-msg" v-if='info.people'>
                 <div class="ct name">{{info.people.username}}</div>
