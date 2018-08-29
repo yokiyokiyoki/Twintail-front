@@ -52,14 +52,29 @@ export default {
             intro:'',
             weibo:'',
             is_member:0
-        }
+        },
+        info:{}
       }
     },
+    created(){
+        if(this.$route.query.isEdit){
+            this.getDetail()
+        }
+    },
     methods: {
+        getDetail(){
+          this.$proxy.get('/api/getUser',{params:{id:this.$route.query.id}})
+          .then( (res)=> {
+              this.info=res.data.data
+              this.form=this.info.people
+              this.imageUrl=this.info.people.tx_pic
+              console.log(this.info);
+          })
+        },
         handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
-        this.imgFile=file.raw
-        console.log(this.imageUrl,file)
+            this.imageUrl = URL.createObjectURL(file.raw);
+            this.imgFile=file.raw
+            console.log(this.imageUrl,file)
       },
       beforeAvatarUpload(file) {
         const isJPG = file.type === 'image/jpeg';
