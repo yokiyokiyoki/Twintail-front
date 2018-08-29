@@ -33,10 +33,23 @@ export default {
             form:{
                 content:'',
                 jump_url:''
-            }
+            },
+            info:{}
         }
     },
+    created(){
+        this.getDetail()
+    },
     methods:{
+        getDetail(){
+          this.$proxy.get('/api/getAdvDetail',{params:{id:this.$route.query.id}})
+          .then( (res)=> {
+              this.info=res.data.data
+              this.form=this.info
+              this.imageUrl=this.info.photo_url
+              console.log(this.info);
+          })
+        },
         handleAvatarSuccess(res, file) {
             this.imageUrl = URL.createObjectURL(file.raw);
             this.imgFile=file.raw

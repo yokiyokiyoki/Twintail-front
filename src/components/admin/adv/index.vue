@@ -23,14 +23,14 @@
                         label="跳转链接"
                         >
                         </el-table-column>
-                        <!-- <el-table-column
+                        <el-table-column
                         fixed="right"
                         label="操作"
                         width="100">
                         <template slot-scope="scope">
                             <el-button @click="handleEit(scope.row)" type="text" size="small">编辑</el-button>
                         </template>
-                        </el-table-column> -->
+                        </el-table-column>
                     </el-table>
                 </div>
                 <div class="empyt" v-else>暂无数据</div>
@@ -57,7 +57,7 @@ export default {
         }
     },
     created(){
-        this.getAllAlbums()
+        this.getAllAdvs()
     }
 }
 </script>
