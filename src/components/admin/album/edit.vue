@@ -57,6 +57,7 @@
 <script>
 export default {
     data(){
+        //status是0代表双马尾协会成员的
         return{
             fileList: [],
             imgFile:'',
@@ -67,7 +68,7 @@ export default {
                 is_banner:false,
             },
             peopleList:[],
-            statusList:[{name:'普通',id:0},{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3}]
+            statusList:[{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3}]
         }
     },
     mounted(){
@@ -84,6 +85,7 @@ export default {
         getAllUsers(){
             this.$proxy.get('/api/getAllUsers').then(res=>{
                 this.peopleList=res.data.data
+                console.log(this.peopleList)
             })
         },
         handleAvatarSuccess(res, file,fileList) {
@@ -104,7 +106,6 @@ export default {
                 this.$message.error('请上传图片');
                 return
             }
-            console.log(this.fileList)
             let param = new FormData() // 创建form对象
             for(let i in this.form){
                 if(i=='people_id'){

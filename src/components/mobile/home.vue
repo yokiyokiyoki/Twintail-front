@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="home-container-body-bottom">
-                <van-tabs v-model="menuActive" class="card">
+                <van-tabs v-model="menuActive" class="card" >
                     <van-tab v-for="(item,index) in menulist" :title="item.name"  :key='index'>
                         <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index' @click="handleClickItem(item)" >
                             <div class="box">
@@ -87,14 +87,16 @@ export default {
     computed:{
         activeAlbum(){
             let res=this.albumLists.filter((item,index)=>{
-                
-                return item.info.status==this.menuActive+1
+                let menuActive=this.menuActive
+                if(this.menuActive==4){
+                    menuActive=-1
+                }
+                return item.info.status==menuActive+1
             })
             return res
         },
         bannerList(){
             let res=this.albumLists.filter((item,index)=>{
-                console.log(item.info)
                 return item.info.is_banner==1
             })
             return res
