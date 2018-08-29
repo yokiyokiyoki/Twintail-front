@@ -4,8 +4,8 @@
             <el-form-item label="写真集名">
                 <el-input v-model="form.album_name"></el-input>
             </el-form-item>
-            <el-form-item label="属于">
-                <el-select v-model="form.people_id" placeholder="请选择">
+            <el-form-item label="属于" >
+                <el-select v-model="form.people_id" placeholder="请选择" @change='changePeople'>
                     <el-option
                     v-for="item in peopleList"
                     :key="item.id"
@@ -14,7 +14,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="状态">
+            <el-form-item label="状态" v-if='isShowStatus'>
                 <el-select v-model="form.status" placeholder="请选择">
                     <el-option
                     v-for="item in statusList"
@@ -64,17 +64,32 @@ export default {
             form:{
                 people_id:'',
                 album_name:'',
-                status:0,
+                status:1,
                 is_banner:false,
             },
             peopleList:[],
-            statusList:[{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3}]
+            statusList:[{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3}],
+            isShowStatus:true
         }
     },
     mounted(){
         this.getAllUsers()
     },
     methods:{
+        changePeople(val){
+            let selectItem=this.peopleList.find((item,index)=>{
+                return item.id==val
+            })
+            if(selectItem.is_member==1){
+                //如果是协会成员
+                this.isShowStatus=false
+                this.form.status=0
+            }else{
+                this.isShowStatus=true
+                this.form.status=1
+            }
+            console.log(val,selectItem)
+        },
         handleRemove(file, fileList) {
             console.log(file, fileList);
             this.fileList=fileList
