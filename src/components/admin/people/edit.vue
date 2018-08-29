@@ -4,6 +4,15 @@
             <el-form-item label="小姐姐">
                 <el-input v-model="form.username"></el-input>
             </el-form-item>
+            <el-form-item label="banner">
+                <el-switch
+                v-model="form.is_member"
+                active-text="是"
+                inactive-text="否"
+                :active-value="1"
+                :inactive-value="0">
+                </el-switch>
+            </el-form-item>
             <el-form-item label="ID">
                 <el-input v-model="form.self_ID"></el-input>
             </el-form-item>
@@ -41,7 +50,8 @@ export default {
             username: '',
             self_ID:'',
             intro:'',
-            weibo:''
+            weibo:'',
+            is_member:0
         }
       }
     },
@@ -88,9 +98,13 @@ export default {
         let param = new FormData() // 创建form对象
         param.append('tx_pic',this.imgFile)
         for(let i in this.form){
+            if(i=='is_memeber'){
+                param.append(i,Number(this.form[i]))
+                continue
+            }
             param.append(i,this.form[i])
         }
-        console.log(param)
+
         let config = {
             headers: {'Content-Type': 'multipart/form-data'}
         }
