@@ -9,7 +9,7 @@
                     <el-option
                     v-for="item in peopleList"
                     :key="item.id"
-                    :label="item.name"
+                    :label="item.username"
                     :value="item.id">
                     </el-option>
                 </el-select>
