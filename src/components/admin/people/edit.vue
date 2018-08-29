@@ -65,7 +65,7 @@ export default {
         return isLt2M
       },
       onSubmit() {
-        if(this.form.name.trim()==''){
+        if(this.form.username.trim()==''){
             this.$message.error('请填写小姐姐名字');
             return
         }

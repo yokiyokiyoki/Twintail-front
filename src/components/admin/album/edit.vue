@@ -91,7 +91,7 @@ export default {
             console.log(res,file,fileList)
         },
         onSubmit(){
-            if(this.form.name.trim()==''){
+            if(this.form.album_name.trim()==''){
                 this.$message.error('请填写真名');
                 return
             }
