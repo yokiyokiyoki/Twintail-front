@@ -51,7 +51,6 @@ export default {
                 res.data.data.forEach((item)=>{
                     this.albumList.push(item.info)
                 })
-                console.log(res)
             })
         },
         handleEit(row){
