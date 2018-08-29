@@ -96,7 +96,7 @@ export default {
                 return
             }
             console.log(this.form,this.fileList)
-            if(this.form.people==''){
+            if(this.form.people_id==''){
                 this.$message.error('请选择所属人');
                 return
             }
