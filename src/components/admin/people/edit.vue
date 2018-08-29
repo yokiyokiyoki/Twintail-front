@@ -4,7 +4,7 @@
             <el-form-item label="小姐姐">
                 <el-input v-model="form.username"></el-input>
             </el-form-item>
-            <el-form-item label="banner">
+            <el-form-item label="协会成员">
                 <el-switch
                 v-model="form.is_member"
                 active-text="是"
