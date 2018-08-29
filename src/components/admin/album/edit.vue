@@ -120,11 +120,16 @@ export default {
                 headers: {'Content-Type': 'multipart/form-data'}
             }
             this.$proxy.post('/api/insertAlbum', param,config)
-            .then(function (response) {
-                this.$message({
-                    message: '恭喜你，添加成功',
-                    type: 'success'
-                });
+            .then((res)=> {
+                if(res.data.success){
+                    this.$message({
+                        message: '恭喜你，添加成功',
+                        type: 'success'
+                    });
+                }else{
+                    this.$message.error(res.data.message)
+                }
+                
                 console.log(response);
             })
             console.log('submit!');

@@ -61,12 +61,16 @@ export default {
                 headers: {'Content-Type': 'multipart/form-data'}
             }
             this.$proxy.post('/api/insertAdv', param,config)
-            .then(function (response) {
-                this.$message({
-                    message: '恭喜你，添加成功',
-                    type: 'success'
-                });
-                console.log(response);
+            .then( (res)=> {
+                if(res.data.success){
+                    this.$message({
+                        message: '恭喜你，添加成功',
+                        type: 'success'
+                    });
+                }else{
+                    this.$message.error(res.data.message)
+                }
+                console.log(res);
             })
             console.log('submit!');
         }
