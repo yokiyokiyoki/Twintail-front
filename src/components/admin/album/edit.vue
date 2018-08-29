@@ -37,7 +37,7 @@
             <el-form-item label="下属图片">
                 <el-upload
                 class="upload-demo"
-                action="/postPhoto"
+                action="/api/postPhoto"
                 :on-preview="handlePreview"
                 :on-remove="handleRemove"
                 :on-success="handleAvatarSuccess"

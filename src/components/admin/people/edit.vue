@@ -16,7 +16,7 @@
             <el-form-item label="头像">
                 <el-upload
                 class="avatar-uploader"
-                action="/postPhoto"
+                action="/api/postPhoto"
                 :show-file-list="false"
                 :on-success="handleAvatarSuccess"
                 :before-upload="beforeAvatarUpload">
