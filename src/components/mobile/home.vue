@@ -130,6 +130,7 @@ export default {
         handleClickStar(item){
             this.$proxy.post('/api/addAlbumStar',{id:item.info.id})
             .then((res)=> {
+                debugger
                 if(res.data.success){
                     console.log('点赞成功')
                     item.info.star+=1

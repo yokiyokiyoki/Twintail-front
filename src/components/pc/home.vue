@@ -91,7 +91,7 @@ export default {
     computed:{
         activeAlbum(){
             let res
-            if(this.menuActive==3){
+            if(this.menuActive==0){
                 //双马尾协会成员
                 res=this.albumLists.filter((item,index)=>{
                     return item.info.is_member==1
@@ -100,11 +100,10 @@ export default {
                 res=this.albumLists.filter((item,index)=>{
                     return item.info.is_member==0
                 })
-                if(this.menuActive==0){
-                    //最新
-                    res=this.$R.clone(res)
-                }
                 if(this.menuActive==1){
+                    //最新
+                }
+                if(this.menuActive==2){
                     //本周热门
                     res=res.filter((item,index)=>{
                         return +this.$moment().startOf('isoWeek')<item.info.creatAt<+this.$moment().endOf('isoWeek')
@@ -113,7 +112,7 @@ export default {
                         return item.info.star>5
                     })
                 }
-                if(this.menuActive==2){
+                if(this.menuActive==3){
                     //热门推荐
                     res=res.filter((item,index)=>{
                         return item.info.star>5
@@ -132,6 +131,15 @@ export default {
     },
     methods:{
         handleClickStar(item){
+            this.$proxy.post('/api/addAlbumStar',{id:item.info.id})
+            .then((res)=> {
+                if(res.data.success){
+                    console.log('点赞成功')
+                    item.info.star+=1
+                }else{
+                    this.$message.error(res.data.message)
+                }
+            })
             console.log(item)
         },
         changeMunu(item){

@@ -53,7 +53,6 @@ export default {
             form:{
                 people_id:'',
                 album_name:'',
-                status:1,
                 is_banner:false,
                 creatAt:+new Date()
             },

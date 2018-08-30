@@ -60,7 +60,7 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    background: #f6f6f6;
+    // background: #f6f6f6;
     font-size: 13px;
     color: #444;
   }
