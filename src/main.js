@@ -4,6 +4,7 @@ import Vue from "vue";
 import App from "./App";
 import router from "./router";
 const R = require("ramda");
+const moment = require("moment");
 import "@/assets/less/app.less";
 Vue.prototype.$R = R;
 
@@ -20,6 +21,7 @@ import axios from "axios";
 Vue.use(ElementUI);
 
 Vue.prototype.$proxy = axios;
+Vue.prototype.$moment = moment;
 
 Vue.config.productionTip = false;
 

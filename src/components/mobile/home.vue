@@ -86,7 +86,32 @@ export default {
     },
     computed:{
         activeAlbum(){
-            return this.albumLists
+            if(menuActive==3){
+                //双马尾协会成员
+                let res=this.albumLists.filter((item,index)=>{
+                    return item.info.is_member==1
+                })
+            }
+            if(menuActive==0){
+                //最新
+                let res=R.clone(this.albumLists)
+            }
+            if(menuActive==1){
+                //本周热门
+                let res=this.albumLists.filter((item,index)=>{
+                    return +moment().startOf('isoWeek')<item.info.creatAt<+moment().endOf('isoWeek')
+                })
+                res=res.filter((item,index)=>{
+                    return item.info.star>5
+                })
+            }
+            if(menuActive==2){
+                //热门推荐
+                res=this.albumLists.filter((item,index)=>{
+                    return item.info.star>5
+                })
+            }
+            return res
         },
         bannerList(){
             let res=this.albumLists.filter((item,index)=>{
