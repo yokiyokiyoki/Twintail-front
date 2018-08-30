@@ -6,14 +6,14 @@
                 <div class="home-container-body-top-carousel">
                     <el-carousel :interval="4000"  height="400px">
                         <el-carousel-item v-for='(item,index) in bannerList' :key='index' >
-                            <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo[0]'>
+                            <img :src="item.photo[0].photo_url" style="height:100%;" v-if='item.photo[0]'>
                         </el-carousel-item>
                     </el-carousel>
                 </div>
                 <div class="home-container-body-top-boxContainer clearfix" >
                     <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
-                        <div class="home-container-body-top-boxContainer-box-pic">
-                            <img :src="item.photo_url" style="height:100%;width:100%;">
+                        <div class="home-container-body-top-boxContainer-box-pic" style="height:100%;width:100%;">
+                            <img :src="item.photo_url" style="height:100%;">
                         </div>
                         <div class="home-container-body-top-boxContainer-box-txt">{{item.content}}</div>
                     </div>

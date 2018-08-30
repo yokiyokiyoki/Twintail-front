@@ -5,7 +5,7 @@
                 <el-input v-model="form.album_name"></el-input>
             </el-form-item>
             <el-form-item label="属于" >
-                <el-select v-model="form.people_id" placeholder="请选择" @change='changePeople'>
+                <el-select v-model="form.people_id" placeholder="请选择" >
                     <el-option
                     v-for="item in peopleList"
                     :key="item.id"
