@@ -39,7 +39,7 @@
                         width="100">
                         <template slot-scope="scope">
                             <!-- <el-button @click="handleEit(scope.row)" type="text" size="small">编辑</el-button> -->
-                            <el-button @click="handleDelete(scope.row)" type="text" size="small">删除</el-button>
+                            <el-button @click="handleDelete(scope.row,scope.$index)" type="text" size="small">删除</el-button>
                         </template>
                         </el-table-column>
                     </el-table>
@@ -68,16 +68,24 @@ export default {
             this.$router.push({path:'/admin/albumEdit',query:{isEdit:1,id:row.id}})
             console.log(row)
         },
-        handleDelete(row){
+        handleDelete(row,index){
             this.$confirm('此操作将永久删除该写真, 是否继续?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
-                this.$message({
-                    type: 'success',
-                    message: '删除成功!'
-                });
+                this.$proxy.post('/api/deleteAlbum',{id:row.id})
+                .then((res)=> {
+                    if(res.data.success){
+                        this.albumList.splice(index,1)
+                        this.$message({
+                            type: 'success',
+                            message: '删除成功!'
+                        });
+                    }else{
+                        this.$message.error(res.data.message)
+                    }
+                })
             }).catch(() => {
                 this.$message({
                     type: 'info',
