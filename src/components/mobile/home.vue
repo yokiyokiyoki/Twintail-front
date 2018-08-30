@@ -22,16 +22,16 @@
             <div class="home-container-body-bottom">
                 <van-tabs v-model="menuActive" class="card" >
                     <van-tab v-for="(item,index) in menulist" :title="item.name"  :key='index'>
-                        <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index' @click="handleClickItem(item)" >
+                        <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index'  >
                             <div class="box">
-                                <div class="box-pic">
-                                    <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo[0]'>
+                                <div class="box-pic" @click="handleClickItem(item)">
+                                    <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo[0]' >
                                 </div>
                                 <div class="box-bottom clearfix">
                                     <div class="box-bottom-left">{{item.info.album_name}}</div>
                                     <div class="box-bottom-right">
-                                        <i class="el-icon-star-on"></i>
-                                        <span class="num">{{item.info.view}}</span>
+                                        <i class="el-icon-star-on" @click="handleClickStar(item)"></i>
+                                        <span class="num">{{item.info.star}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -103,6 +103,9 @@ export default {
         }
     },
     methods:{
+        handleClickStar(item){
+            console.log(item)
+        },
         changeMunu(item){
             console.log(item)
         },

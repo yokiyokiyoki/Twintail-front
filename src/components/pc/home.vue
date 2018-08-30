@@ -22,22 +22,19 @@
             <div class="home-container-body-bottom">
                 <div class="home-container-body-bottom-left">
                     <div class="home-container-body-bottom-left-header">
-                        <!-- <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='最新'}" style="flex:1;" @click="handleClickItem('最新')">最新</div>
-                        <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='本周热门'}" style="flex:1;" @click="handleClickItem('本周热门')">本周热门</div>
-                        <div class="home-container-body-bottom-left-header-item" :class="{'active':activeItem=='热门推荐'}" style="flex:1;" @click="handleClickItem('热门推荐')">热门推荐</div> -->
                         <div class="home-container-body-bottom-left-header-item" v-for='(item,index) in menulist' style="flex:1;" :class="{'active':menuActive==item.id}" @click="handleClickMenu(item)" :key="index">{{item.name}}</div>
                     </div>
                     <div class="home-container-body-bottom-left-body">
-                        <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index' @click="handleClickItem(item)">
+                        <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index' >
                             <div class="box">
-                                <div class="box-pic">
+                                <div class="box-pic" @click="handleClickItem(item)">
                                      <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo[0]'>
                                 </div>
                                 <div class="box-bottom clearfix">
                                     <div class="box-bottom-left">{{item.info.album_name}}</div>
                                     <div class="box-bottom-right">
-                                        <i class="el-icon-star-on"></i>
-                                        <span class="num">{{item.info.view}}</span>
+                                        <i class="el-icon-star-on" @click='handleClickStar(item)'></i>
+                                        <span class="num">{{item.info.star}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -106,6 +103,9 @@ export default {
         }
     },
     methods:{
+        handleClickStar(item){
+            console.log(item)
+        },
         changeMunu(item){
             console.log(item)
         },
