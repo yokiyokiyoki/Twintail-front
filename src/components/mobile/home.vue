@@ -86,31 +86,37 @@ export default {
     },
     computed:{
         activeAlbum(){
-            if(menuActive==3){
+            let res
+            if(this.menuActive==3){
                 //双马尾协会成员
-                let res=this.albumLists.filter((item,index)=>{
+                res=this.albumLists.filter((item,index)=>{
                     return item.info.is_member==1
                 })
-            }
-            if(menuActive==0){
-                //最新
-                let res=R.clone(this.albumLists)
-            }
-            if(menuActive==1){
-                //本周热门
-                let res=this.albumLists.filter((item,index)=>{
-                    return +moment().startOf('isoWeek')<item.info.creatAt<+moment().endOf('isoWeek')
-                })
-                res=res.filter((item,index)=>{
-                    return item.info.star>5
-                })
-            }
-            if(menuActive==2){
-                //热门推荐
+            }else{
                 res=this.albumLists.filter((item,index)=>{
-                    return item.info.star>5
+                    return item.info.is_member==0
                 })
+                if(this.menuActive==0){
+                    //最新
+                    res=this.$R.clone(res)
+                }
+                if(this.menuActive==1){
+                    //本周热门
+                    res=res.filter((item,index)=>{
+                        return +this.$moment().startOf('isoWeek')<item.info.creatAt<+this.$moment().endOf('isoWeek')
+                    })
+                    res=res.filter((item,index)=>{
+                        return item.info.star>5
+                    })
+                }
+                if(this.menuActive==2){
+                    //热门推荐
+                    res=res.filter((item,index)=>{
+                        return item.info.star>5
+                    })
+                }
             }
+            
             return res
         },
         bannerList(){
