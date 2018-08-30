@@ -38,14 +38,15 @@
                         label="是否是协会成员"
                         width="300">
                         </el-table-column>
-                        <!-- <el-table-column
+                        <el-table-column
                         fixed="right"
                         label="操作"
                         width="100">
                         <template slot-scope="scope">
-                            <el-button @click="handleEit(scope.row)" type="text" size="small">编辑</el-button>
+                            <!-- <el-button @click="handleEit(scope.row)" type="text" size="small">编辑</el-button> -->
+                            <el-button @click="handleDelete(scope.row)" type="text" size="small">删除</el-button>
                         </template>
-                        </el-table-column> -->
+                        </el-table-column>
                     </el-table>
                 </div>
                 <div class="empyt" v-else>暂无数据</div>
@@ -69,6 +70,9 @@ export default {
         },
         handleEit(row){
             this.$router.push({path:'/admin/peopleEdit',query:{isEdit:1,id:row.id}})
+            console.log(row)
+        },
+        handleDelete(row){
             console.log(row)
         }
     },

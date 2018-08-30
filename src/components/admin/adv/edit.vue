@@ -86,9 +86,14 @@ export default {
                 console.log(res);
             })
         },
+        handleEdit(){
+            console.log('编辑')
+        },
         onSubmit(){
             if(this.$route.query.isEdit==0){
                 this.handleAdd()
+            }else{
+                this.handleEdit()
             }
             console.log('submit!');
         }
