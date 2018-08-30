@@ -89,8 +89,8 @@ export default {
         // return isJPG && isLt2M;
         return isLt2M
       },
-      onSubmit() {
-        if(this.form.username.trim()==''){
+      handleAdd(){
+          if(this.form.username.trim()==''){
             this.$message.error('请填写小姐姐名字');
             return
         }
@@ -135,6 +135,11 @@ export default {
             }
             console.log(res);
         })
+      },
+      onSubmit() {
+        if(this.$route.query.isEdit==0){
+            this.handleAdd()
+        }
         console.log('submit!');
       }
     }

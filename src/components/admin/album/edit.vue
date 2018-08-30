@@ -14,16 +14,6 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="状态" v-if='isShowStatus'>
-                <el-select v-model="form.status" placeholder="请选择">
-                    <el-option
-                    v-for="item in statusList"
-                    :key="item.id"
-                    :label="item.name"
-                    :value="item.id">
-                    </el-option>
-                </el-select>
-            </el-form-item>
             <el-form-item label="banner">
                 <el-switch
                 v-model="form.is_banner"
@@ -33,7 +23,6 @@
                 :inactive-value="0">
                 </el-switch>
             </el-form-item>
-            
             <el-form-item label="下属图片">
                 <el-upload
                 class="upload-demo"
@@ -66,37 +55,23 @@ export default {
                 album_name:'',
                 status:1,
                 is_banner:false,
+                creatAt:+new Date()
             },
             peopleList:[],
             statusList:[{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3}],
-            isShowStatus:true
         }
     },
     mounted(){
         this.getAllUsers()
     },
     methods:{
-        changePeople(val){
-            let selectItem=this.peopleList.find((item,index)=>{
-                return item.id==val
-            })
-            if(selectItem.is_member==1){
-                //如果是协会成员
-                this.isShowStatus=false
-                this.form.status=0
-            }else{
-                this.isShowStatus=true
-                this.form.status=1
-            }
-            console.log(val,selectItem)
-        },
         handleRemove(file, fileList) {
             console.log(file, fileList);
             this.fileList=fileList
         },
         handlePreview(file) {
             console.log(file);
-        },
+        }, 
         getAllUsers(){
             this.$proxy.get('/api/getAllUsers').then(res=>{
                 this.peopleList=res.data.data
@@ -107,7 +82,7 @@ export default {
             this.fileList=fileList
             console.log(res,file,fileList)
         },
-        onSubmit(){
+        handleAdd(){
             if(this.form.album_name.trim()==''){
                 this.$message.error('请填写真名');
                 return
@@ -148,6 +123,11 @@ export default {
                 
                 console.log(res);
             })
+        },
+        onSubmit(){
+            if(this.$route.query.isEdit==0){
+                this.handleAdd()
+            }
             console.log('submit!');
         }
     }

@@ -55,7 +55,7 @@ export default {
             this.imgFile=file.raw
             console.log(this.imageUrl,file)
         },
-        onSubmit(){
+        handleAdd(){
             if(this.form.content.trim()==''){
                 this.$message.error('请填写广告词');
                 return
@@ -85,6 +85,11 @@ export default {
                 }
                 console.log(res);
             })
+        },
+        onSubmit(){
+            if(this.$route.query.isEdit==0){
+                this.handleAdd()
+            }
             console.log('submit!');
         }
     }
