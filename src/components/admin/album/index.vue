@@ -23,6 +23,16 @@
                         label="是否是banner"
                         >
                         </el-table-column>
+                        <el-table-column
+                        prop="star"
+                        label="喜欢"
+                        >
+                        </el-table-column>
+                        <el-table-column
+                        prop="creatAt"
+                        label="创建时间"
+                        >
+                        </el-table-column>
                         <!-- <el-table-column
                         fixed="right"
                         label="操作"
