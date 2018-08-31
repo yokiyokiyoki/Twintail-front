@@ -6,7 +6,7 @@
                 <div class="home-container-body-top-carousel">
                     <van-swipe :autoplay="3000">
                         <van-swipe-item v-for='(item,index) in bannerList' :key='index'>
-                            <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo[0]'>
+                            <img :src="item.photo[0].photo_url"  v-if='item.photo[0]'>
                         </van-swipe-item>
                     </van-swipe>
                 </div>
@@ -22,7 +22,7 @@
             <div class="home-container-body-bottom">
                 <van-tabs v-model="menuActive" class="card" >
                     <van-tab v-for="(item,index) in menulist" :title="item.name"  :key='index'>
-                        <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index'  >
+                        <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index'>
                             <div class="box">
                                 <div class="box-pic" @click="handleClickItem(item)">
                                     <img :src="item.photo[0].photo_url"  v-if='item.photo[0]' >
@@ -130,7 +130,6 @@ export default {
         handleClickStar(item){
             this.$proxy.post('/api/addAlbumStar',{id:item.info.id})
             .then((res)=> {
-                debugger
                 if(res.data.success){
                     console.log('点赞成功')
                     item.info.star+=1

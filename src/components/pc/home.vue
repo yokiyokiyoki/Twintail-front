@@ -13,7 +13,7 @@
                 <div class="home-container-body-top-boxContainer clearfix" >
                     <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
                         <div class="home-container-body-top-boxContainer-box-pic" style="height:100%;width:100%;">
-                            <img :src="item.photo_url" style="height:100%;">
+                            <img :src="item.photo_url" >
                         </div>
                         <div class="home-container-body-top-boxContainer-box-txt">{{item.content}}</div>
                     </div>
@@ -24,11 +24,11 @@
                     <div class="home-container-body-bottom-left-header">
                         <div class="home-container-body-bottom-left-header-item" v-for='(item,index) in menulist' style="flex:1;" :class="{'active':menuActive==item.id}" @click="handleClickMenu(item)" :key="index">{{item.name}}</div>
                     </div>
-                    <div class="home-container-body-bottom-left-body">
+                    <div class="home-container-body-bottom-left-body" v-if='activeAlbum.length'>
                         <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index' >
                             <div class="box">
                                 <div class="box-pic" @click="handleClickItem(item)">
-                                     <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo[0]'>
+                                     <img :src="item.photo[0].photo_url"  v-if='item.photo[0]'>
                                 </div>
                                 <div class="box-bottom clearfix">
                                     <div class="box-bottom-left">{{item.info.album_name}}</div>
@@ -40,6 +40,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="home-container-body-bottom-left-body empty" v-else>暂无数据</div>
                 </div>
                 <div class="home-container-body-bottom-right">
                     <div class="home-container-body-bottom-right-header">

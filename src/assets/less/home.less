@@ -79,6 +79,12 @@
             flex-wrap: wrap;
             height: 630px;
             overflow-y: auto;
+            &.empty {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #999;
+            }
             &-card {
               margin-top: 10px;
               height: 300px;
@@ -239,6 +245,17 @@
               line-height: 186px;
               background-color: #39a9ed;
               color: white;
+              position: relative;
+              overflow: hidden;
+              img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: block;
+                min-width: 100%;
+                min-height: 100%;
+                transform: translate(-50%, -50%);
+              }
             }
           }
         }
