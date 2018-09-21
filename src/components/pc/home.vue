@@ -4,7 +4,7 @@
         <div class="home-container-body">
             <div class="home-container-body-top">
                 <div class="home-container-body-top-carousel">
-                    <el-carousel :interval="4000"  height="400px">
+                    <el-carousel :interval="4000"  height="540px">
                         <el-carousel-item v-for='(item,index) in bannerList' :key='index' >
                             <img :src="item.photo[0].photo_url" style="height:100%;" v-if='item.photo[0]'>
                         </el-carousel-item>
