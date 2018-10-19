@@ -8,24 +8,30 @@
                 <el-input v-model="form.jump_url"></el-input>
             </el-form-item>
             <el-form-item label="封面">
-                <el-upload
+                <!-- <el-upload
                 class="avatar-uploader"
                 action="/api/postPhoto"
                 :show-file-list="false"
                 :on-success="handleAvatarSuccess">
                 <img v-if="imageUrl" :src="imageUrl" class="avatar">
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                </el-upload>
+                </el-upload> -->
+                <uploader :multiple='true' @imgupload="imgupload"/>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">立即创建</el-button>
                 <el-button @click="$router.push('/admin/adv')">取消</el-button>
             </el-form-item>
         </el-form>
+        
     </div>
 </template>
 <script>
+import uploader from '@/components/uploader'
 export default {
+    components:{
+        uploader
+    },
     data(){
         return{
             imageUrl:'',
@@ -38,9 +44,14 @@ export default {
         }
     },
     created(){
-        this.getDetail()
+        if(this.$route.query.isEdit==1){
+            this.getDetail()
+        }
     },
     methods:{
+        imgupload(data){
+            console.log(data)
+        },
         getDetail(){
           this.$proxy.get('/api/getAdvDetail',{params:{id:this.$route.query.id}})
           .then( (res)=> {
@@ -69,7 +80,7 @@ export default {
             for(let i in this.form){
                 param.append(i,this.form[i])
             }
-            console.log(param)
+            console.log(param,this.imgFile)
             let config = {
                 headers: {'Content-Type': 'multipart/form-data'}
             }

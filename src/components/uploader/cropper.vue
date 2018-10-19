@@ -3,7 +3,7 @@
     <div class="cropper-content">
       <!-- 剪裁框 -->
       <div class="cropper">
-        <vueCropper ref="cropper" :img="option.img" :outputSize="option.size" :outputType="option.outputType" :info="true" :full="option.full" :canMove="option.canMove" :canMoveBox="option.canMoveBox" :original="option.original" :autoCrop="option.autoCrop" :autoCropWidth="option.autoCropWidth" :autoCropHeight="option.autoCropHeight" :fixedBox="option.fixedBox" @realTime="realTime" :fixed="option.fixed" :fixedNumber="fixedNumber"></vueCropper>
+        <vue-cropper ref="cropper" :img="option.img" :outputSize="option.size" :outputType="option.outputType" :info="true" :full="option.full" :canMove="option.canMove" :canMoveBox="option.canMoveBox" :original="option.original" :autoCrop="option.autoCrop" :autoCropWidth="option.autoCropWidth" :autoCropHeight="option.autoCropHeight" :fixedBox="option.fixedBox" @realTime="realTime" :fixed="option.fixed" :fixedNumber="fixedNumber"/>
       </div>
       <!-- 预览框 -->
       <div class="show-preview" :style="{'width': '300px', 'height': '300px',  'overflow': 'hidden', 'margin': '0 25px', 'display':'flex', 'align-items' : 'center'}">
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import VueCropper from 'vue-cropper'
+
 export default {
   data () {
     return {
@@ -43,11 +43,11 @@ export default {
         original: false, // 上传图片按照原始比例渲染  (默认:false)
         canMoveBox: true, // 截图框能否拖动  (默认:true)
         autoCrop: true, // 是否默认生成截图框  (默认:false)
-        autoCropWidth: 400, // 默认生成截图框宽度  (默认:80%)
-        autoCropHeight: 400, // 默认生成截图框高度  (默认:80%)
+        // autoCropWidth: 400, // 默认生成截图框宽度  (默认:80%)
+        // autoCropHeight: 400, // 默认生成截图框高度  (默认:80%)
         fixedBox: false, // 固定截图框大小 不允许改变  (默认:false)
         fixed: true, // 是否开启截图框宽高固定比例  (默认:true)
-        fixedNumber: [1.5, 1] // 截图框比例  (默认:[1:1])
+        fixedNumber: [16, 9] // 截图框比例  (默认:[1:1])
       },
       downImg: '#'
     }
@@ -90,7 +90,6 @@ export default {
       }
     }
   },
-  components: { VueCropper }
 }
 </script>
 <style>

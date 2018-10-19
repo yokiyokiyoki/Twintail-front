@@ -23,21 +23,21 @@
     </el-dialog>
     <!-- 剪裁组件弹窗 -->
     <el-dialog :visible.sync="cropperModel" width="800px" :before-close="beforeClose">
-      <Cropper :img-file="file" ref="vueCropper" :fixedNumber="fixedNumber" @upload="upload">
+      <Cropper :img-file="file" ref="vueCropper" :fixedNumber="fixedNumber" @upload="upload" >
       </Cropper>
     </el-dialog>
   </div>
 </template>
 <script>
 import Cropper from './cropper'
-import axios from '@/assets/js/axios'
+
 export default {
   name: 'uploader',
   props: {
     targetUrl: {
       // 上传地址
       type: String,
-      default: '/storage/upload'
+      default: '/api/postPhoto'
     },
     multiple: {
       // 多图开关
@@ -57,12 +57,12 @@ export default {
     width: {
       // 单图剪裁框宽度
       type: Number,
-      default: 178
+      default: 300
     },
     height: {
       // 单图剪裁框高度
       type: Number,
-      default: 178
+      default: 300
     }
   },
   data () {
@@ -142,6 +142,7 @@ export default {
     },
     handleCrop (file, files) {
       // 点击弹出剪裁框
+      console.log(this.cropperModel,this)
       this.cropperModel = true
       this.file = file
       // this.imageUrl = file.url
@@ -155,13 +156,13 @@ export default {
         this.$refs.uploading.style.display = 'block'
       }
       let formData = new FormData()
-      formData.append('attachment', data)
-      axios.post(this.targetUrl, formData).then(res => {
+      formData.append('photo', data)
+      this.$proxy.post(this.targetUrl, formData).then(res => {
         if (!this.multiple) {
           // 上传完成后隐藏正在上传
           this.$refs.uploading.style.display = 'none'
         }
-        if (res.msg === 'success') {
+        if (res.data === 'success') {
           // 上传成功将照片传回父组件
           const currentPic = res.data.url
           if (this.multiple) {

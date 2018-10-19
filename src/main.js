@@ -24,7 +24,9 @@ Vue.prototype.$proxy = axios;
 Vue.prototype.$moment = moment;
 
 Vue.config.productionTip = false;
+import VueCropper from "vue-cropper";
 
+Vue.use(VueCropper);
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
