@@ -17,7 +17,17 @@
         show-cancel-button
         :before-close="beforeClose"
         >
-        <van-search placeholder="请输入搜索的小姐姐" v-model="search" />
+            <el-autocomplete
+            v-model="search"
+            :fetch-suggestions="querySearchAsync"
+            placeholder="搜索"
+            @select="handleSelect"
+            >
+             <i
+                class="el-icon-search"
+                slot="suffix">
+            </i>
+            </el-autocomplete>
         </van-dialog>
     </div>
     
@@ -27,10 +37,17 @@ export default {
     data(){
         return{
             search:'',
-            show:false
+            show:false,
+            list:[]
         }
     },
+    mounted() {
+      this.list = this.loadAll();
+    },
     methods:{
+        handleSelect(item) {
+        this.$router.push(`/info/${item.id}`)
+      },
         searchDialog(){
             this.show=true
         },
@@ -40,7 +57,31 @@ export default {
             } else {
                 done();
             }
-        }
+        },
+        querySearchAsync(queryString, cb) {
+            var list = this.list;
+            var results = queryString ? list.filter(this.createStateFilter(queryString)) : list;
+            // 调用 callback 返回建议列表的数据
+            cb(results);
+        },
+        createStateFilter(queryString) {
+            return (state) => {
+            return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+            };
+        },
+        loadAll() {
+            let arr=[]
+            this.$proxy.get('/api/getAllUsers').then(res=>{
+                // console.log(res)
+                res.data.data.forEach((item)=>{
+                arr.push({'value':item.username,'id':item.id})
+                })
+            })
+            return arr
+            // return [
+            //   { "value": "三全鲜食（北新泾店）", "address": "长宁区新渔路144号" },
+            // ];
+        },
     }
 }
 </script>
