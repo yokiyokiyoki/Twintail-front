@@ -81,7 +81,9 @@ export default {
       let that = this
       if (type === 'blob') {
         this.$refs.cropper.getCropBlob(data => {
-          that.$emit('upload', data)
+          // 数据从blob转成file
+          let file = new window.File([data], this.imgFile.name, {type: data.type})
+          that.$emit('upload', file)
         })
       } else {
         this.$refs.cropper.getCropData(data => {

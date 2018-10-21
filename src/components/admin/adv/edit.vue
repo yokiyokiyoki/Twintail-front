@@ -8,15 +8,7 @@
                 <el-input v-model="form.jump_url"></el-input>
             </el-form-item>
             <el-form-item label="封面">
-                <!-- <el-upload
-                class="avatar-uploader"
-                action="/api/postPhoto"
-                :show-file-list="false"
-                :on-success="handleAvatarSuccess">
-                <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                </el-upload> -->
-                <uploader :multiple='true' @imgupload="imgupload"/>
+                <uploader  :initUrl='imageUrl' @getRawFile="imgupload"/>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">立即创建</el-button>
@@ -51,20 +43,16 @@ export default {
     methods:{
         imgupload(data){
             console.log(data)
+            this.imgFile=data
         },
         getDetail(){
           this.$proxy.get('/api/getAdvDetail',{params:{id:this.$route.query.id}})
           .then( (res)=> {
               this.info=res.data.data
               this.form=this.info
-              this.imageUrl=this.info.photo_url
+              this.imageUrl=`${location.host}${this.info.photo_url}`
               console.log(this.info);
           })
-        },
-        handleAvatarSuccess(res, file) {
-            this.imageUrl = URL.createObjectURL(file.raw);
-            this.imgFile=file.raw
-            console.log(this.imageUrl,file)
         },
         handleAdd(){
             if(this.form.content.trim()==''){
@@ -98,7 +86,34 @@ export default {
             })
         },
         handleEdit(){
-            console.log('编辑')
+            
+            let config = {
+                headers: {'Content-Type': 'multipart/form-data'}
+            }
+            //当前广告的id
+            const id=this.$route.query.id
+            let param = new FormData() // 创建form对象
+            if(!this.imgFile){
+                //没有编辑，不能提交
+                param.delete('photo_url')
+            }
+            for(let i in this.form){
+                param.append(i,this.form[i])
+            }
+            this.$proxy.post('/api/updateAdv', param,config)
+            .then( (res)=> {
+                if(res.data.success){
+                    this.$message({
+                        message: '恭喜你，更新成功',
+                        type: 'success'
+                    });
+                }else{
+                    this.$message.error(res.data.message)
+                }
+                console.log(res);
+            })
+            console.log('编辑',id)
+            
         },
         onSubmit(){
             if(this.$route.query.isEdit==0){

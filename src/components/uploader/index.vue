@@ -157,23 +157,27 @@ export default {
       }
       let formData = new FormData()
       formData.append('photo', data)
+      this.$emit('getRawFile',data)
+      console.log(data)
       this.$proxy.post(this.targetUrl, formData).then(res => {
         if (!this.multiple) {
           // 上传完成后隐藏正在上传
           this.$refs.uploading.style.display = 'none'
         }
         if (res.data === 'success') {
-          // 上传成功将照片传回父组件
-          const currentPic = res.data.url
+          // 上传成功将照片传回父组件，这里后端暂时不做处理(对组件修改)
+          // const currentPic = res.data.url
+          const currentPic=URL.createObjectURL(data);
           if (this.multiple) {
             this.uploadList.push({
               url: currentPic,
               uid: '111'
             })
             this.uploadList.pop()
-            this.$emit('imgupload', this.formatImgArr(this.uploadList))
+            this.$emit('imgupload', this.formatImgArr(this.uploadList,data))
           } else {
             this.$emit('imgupload', currentPic)
+            this.imageUrl=currentPic
           }
         } else {
           // 上传失败则显示上传失败，如多图则从图片列表删除图片
