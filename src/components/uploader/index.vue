@@ -86,7 +86,6 @@ export default {
     initUrl: function (val) {
       // 监听传入初始化图片
       console.info('watch')
-      console.info(val)
       if (val) {
         if (typeof this.initUrl === 'string') {
           this.imageUrl = val
@@ -101,6 +100,7 @@ export default {
       this.imageUrl = this.initUrl
     } else {
       this.uploadList = this.formatImgArr(this.initUrl)
+      console.log(this.uploadList,'11')
     }
   },
   methods: {
@@ -114,6 +114,7 @@ export default {
       // 删除图片后更新图片文件列表并通知父级变化
       this.uploadList = fileList
       this.$emit('imgupload', this.formatImgArr(this.uploadList))
+      this.$emit('getRawFile',this.formatImgArr(this.uploadList))
     },
     consoleFL (file, fileList) {
       // 弹出剪裁框，将当前文件设置为文件
@@ -157,8 +158,8 @@ export default {
       }
       let formData = new FormData()
       formData.append('photo', data)
-      this.$emit('getRawFile',data)
-      console.log(data)
+      
+      
       this.$proxy.post(this.targetUrl, formData).then(res => {
         if (!this.multiple) {
           // 上传完成后隐藏正在上传
@@ -171,12 +172,15 @@ export default {
           if (this.multiple) {
             this.uploadList.push({
               url: currentPic,
-              uid: '111'
+              uid: '111',
+              data
             })
             this.uploadList.pop()
             this.$emit('imgupload', this.formatImgArr(this.uploadList,data))
+            this.$emit('getRawFile',this.formatImgArr(this.uploadList,data))
           } else {
             this.$emit('imgupload', currentPic)
+            this.$emit('getRawFile',data)
             this.imageUrl=currentPic
           }
         } else {
@@ -192,13 +196,14 @@ export default {
     },
     formatImgArr (arr) {
       const result = arr.map((item, index) => {
+        // console.log(typeof item,item)
         if (typeof item === 'string') {
           return {
             url: item,
             uid: `index${index}`
           }
         } else {
-          return item.url
+          return {url:item.url,data:item}
         }
       })
       return result
