@@ -89,6 +89,37 @@ export default {
         // return isJPG && isLt2M;
         return isLt2M
       },
+      handleEdit(){
+          if(this.form.username.trim()==''){
+                this.$message.error('请填写小姐姐名字');
+                return
+            }
+            if(this.form.self_ID.trim()==''){
+                this.$message.error('请填写小姐姐ID');
+                return
+            }
+            if(this.form.intro.trim()==''){
+                this.$message.error('请填写小姐姐介绍');
+                return
+            }
+            if(this.form.weibo.trim()==''){
+                this.$message.error('请填写小姐姐微博');
+                return
+            }
+            if(!this.imgFile){
+                this.$message.error('请上传头像');
+                return
+            }
+            let param = new FormData() // 创建form对象
+            param.append('tx_pic',this.imgFile)
+            for(let i in this.form){
+                if(i=='is_memeber'){
+                    param.append(i,Number(this.form[i]))
+                    continue
+                }
+                param.append(i,this.form[i])
+            }
+      },
       handleAdd(){
           if(this.form.username.trim()==''){
             this.$message.error('请填写小姐姐名字');
@@ -139,6 +170,8 @@ export default {
       onSubmit() {
         if(this.$route.query.isEdit==0){
             this.handleAdd()
+        }else{
+            this.handleEdit()
         }
         console.log('submit!');
       }

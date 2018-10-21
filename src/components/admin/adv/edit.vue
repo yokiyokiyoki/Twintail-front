@@ -50,7 +50,7 @@ export default {
           .then( (res)=> {
               this.info=res.data.data
               this.form=this.info
-              this.imageUrl=`${location.host}${this.info.photo_url}`
+              this.imageUrl=`${this.info.photo_url}`
               console.log(this.info);
           })
         },

@@ -95,10 +95,13 @@ export default {
                 this.form.people_id=filterItem.info.people_id
                 this.form.album_name=filterItem.info.album_name
                 this.form.is_banner=filterItem.info.is_banner
+                this.originFileList=[]
+                this.fileList=[]
+                this.originFileListImg=[]
                 filterItem.photo.forEach((item,index)=>{
-                    this.fileList.push(`${location.host}${item.photo_url}`)
+                    this.fileList.push(`${item.photo_url}`)
                     this.originFileList.push(item)
-                    this.originFileListImg.push(`${location.host}${item.photo_url}`)
+                    this.originFileListImg.push(`${item.photo_url}`)
                 })
                 // console.log(this.peopleList,filterItem)
             })
@@ -182,10 +185,13 @@ export default {
             }
             //没有被删除的，本来有
             let updateList=[]
+            let count=1//计数器
+            param.append('album_id',this.$route.query.id)
             this.fileList.forEach((item,index)=>{
-                if(item.data&&item.name){
+                if(item.data&&item.data.name){
                     //是新上传的文件
-                    param.append(`photo_url${index}`,item.data.raw)
+                    param.append(`photo_url${count}`,item.data.raw)
+                    count++
                 }
                 if(typeof item=='string'){
                     this.originFileList.forEach((subItem)=>{

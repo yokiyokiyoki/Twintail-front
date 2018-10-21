@@ -35,7 +35,7 @@
                         </el-table-column>
                         <el-table-column
                         prop="is_member"
-                        label="是否是协会成员"
+                        label="是否是协会成员(1是，0否)"
                         width="300">
                         </el-table-column>
                         <el-table-column
@@ -43,7 +43,7 @@
                         label="操作"
                         width="100">
                         <template slot-scope="scope">
-                            <!-- <el-button @click="handleEit(scope.row)" type="text" size="small">编辑</el-button> -->
+                            <el-button @click="handleEit(scope.row)" type="text" size="small">编辑</el-button>
                             <el-button @click="handleDelete(scope.row,scope.$index)" type="text" size="small">删除</el-button>
                         </template>
                         </el-table-column>
