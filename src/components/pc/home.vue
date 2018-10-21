@@ -6,7 +6,7 @@
                 <div class="home-container-body-top-carousel">
                     <el-carousel :interval="4000"  height="540px">
                         <el-carousel-item v-for='(item,index) in bannerList' :key='index' >
-                            <img :src="item.photo[0].photo_url" style="height:100%;" v-if='item.photo[0]'>
+                            <img :src="subItem.photo_url" v-for='(subItem,subIndex) in item.photo' v-if='subItem.is_cover==1' :key='subIndex' style="height:100%;" @click="handleBanner(item)" >
                         </el-carousel-item>
                     </el-carousel>
                 </div>
@@ -28,7 +28,7 @@
                         <div class="home-container-body-bottom-left-body-card" v-for='(item,index) in activeAlbum' :key='index' >
                             <div class="box">
                                 <div class="box-pic" @click="handleClickItem(item)">
-                                     <img :src="item.photo[0].photo_url"  v-if='item.photo[0]'>
+                                     <img :src="subItem.photo_url" v-for='(subItem,subIndex) in item.photo' v-if='subItem.is_cover==1' :key='subIndex'  @click="handleBanner(item)" >
                                 </div>
                                 <div class="box-bottom clearfix">
                                     <div class="box-bottom-left">{{item.info.album_name}}</div>
@@ -131,6 +131,10 @@ export default {
         }
     },
     methods:{
+        handleBanner(item){
+            // console.log(item)
+            this.$router.push(`/detail/${item.info.id}`)
+        },
         handleClickStar(item){
             this.$proxy.post('/api/addAlbumStar',{id:item.info.id})
             .then((res)=> {

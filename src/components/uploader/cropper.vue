@@ -46,8 +46,8 @@ export default {
         // autoCropWidth: 400, // 默认生成截图框宽度  (默认:80%)
         // autoCropHeight: 400, // 默认生成截图框高度  (默认:80%)
         fixedBox: false, // 固定截图框大小 不允许改变  (默认:false)
-        fixed: true, // 是否开启截图框宽高固定比例  (默认:true)
-        fixedNumber: [16, 9] // 截图框比例  (默认:[1:1])
+        fixed: false, // 是否开启截图框宽高固定比例  (默认:true)
+        fixedNumber: [ 16,9] // 截图框比例  (默认:[1:1])
       },
       downImg: '#'
     }
