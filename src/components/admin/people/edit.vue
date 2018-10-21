@@ -23,7 +23,7 @@
                 <el-input v-model="form.intro"></el-input>
             </el-form-item>
             <el-form-item label="头像">
-                <el-upload
+                <!-- <el-upload
                 class="avatar-uploader"
                 action="/api/postPhoto"
                 :show-file-list="false"
@@ -31,17 +31,22 @@
                 :before-upload="beforeAvatarUpload">
                 <img v-if="imageUrl" :src="imageUrl" class="avatar">
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                </el-upload>
+                </el-upload> -->
+                <uploader  :initUrl='imageUrl' @getRawFile="imgupload"/>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                <el-button type="primary" @click="onSubmit">立即{{$route.query.id?'修改':'创建'}}</el-button>
                 <el-button @click="$router.push('/admin/people')">取消</el-button>
             </el-form-item>
         </el-form>
     </div>
 </template>
 <script>
+import uploader from '@/components/uploader'
 export default {
+    components:{
+        uploader
+    },
     data() {
       return {
         imageUrl: '',
@@ -62,13 +67,16 @@ export default {
         }
     },
     methods: {
+        imgupload(data){
+            // console.log(data,'11')
+            this.imgFile=data
+        },
         getDetail(){
           this.$proxy.get('/api/getUser',{params:{id:this.$route.query.id}})
           .then( (res)=> {
               this.info=res.data.data
               this.form=this.info.people
               this.imageUrl=this.info.people.tx_pic
-              console.log(this.info);
           })
         },
         handleAvatarSuccess(res, file) {
@@ -106,12 +114,19 @@ export default {
                 this.$message.error('请填写小姐姐微博');
                 return
             }
-            if(!this.imgFile){
+            if(!this.imageUrl){
                 this.$message.error('请上传头像');
                 return
             }
             let param = new FormData() // 创建form对象
-            param.append('tx_pic',this.imgFile)
+            if(!this.imgFile||!this.imageUrl.includes('blob')){
+                //没有编辑，不能提交
+                param.delete('tx_pic')
+            }
+            if(this.imgFile){
+                param.append('tx_pic',this.imgFile)
+            }
+            
             for(let i in this.form){
                 if(i=='is_memeber'){
                     param.append(i,Number(this.form[i]))
@@ -119,6 +134,22 @@ export default {
                 }
                 param.append(i,this.form[i])
             }
+            let config = {
+                headers: {'Content-Type': 'multipart/form-data'}
+            }
+            this.$proxy.post('/api/updateUser', param,config)
+            .then((res)=> {
+                if(res.data.success){
+                    this.$message({
+                        message: '恭喜你，更新成功',
+                        type: 'success'
+                    });
+                    this.getDetail()
+                }else{
+                    this.$message.error(res.data.message)
+                }
+                console.log(res);
+            })
       },
       handleAdd(){
           if(this.form.username.trim()==''){

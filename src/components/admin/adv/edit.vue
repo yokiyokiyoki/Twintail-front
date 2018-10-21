@@ -11,7 +11,7 @@
                 <uploader  :initUrl='imageUrl' @getRawFile="imgupload"/>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                <el-button type="primary" @click="onSubmit">立即{{$route.query.id?'修改':'创建'}}</el-button>
                 <el-button @click="$router.push('/admin/adv')">取消</el-button>
             </el-form-item>
         </el-form>
@@ -42,7 +42,7 @@ export default {
     },
     methods:{
         imgupload(data){
-            console.log(data)
+            // console.log(data)
             this.imgFile=data
         },
         getDetail(){
@@ -86,19 +86,29 @@ export default {
             })
         },
         handleEdit(){
-            
+            if(this.form.content.trim()==''){
+                this.$message.error('请填写广告词');
+                return
+            }
+            if(!this.imageUrl){
+                this.$message.error('请上传图片');
+                return
+            }
             let config = {
                 headers: {'Content-Type': 'multipart/form-data'}
             }
             //当前广告的id
             const id=this.$route.query.id
             let param = new FormData() // 创建form对象
-            if(!this.imgFile){
+            if(!this.imgFile||!this.imageUrl.includes('blob')){
                 //没有编辑，不能提交
                 param.delete('photo_url')
             }
             for(let i in this.form){
                 param.append(i,this.form[i])
+            }
+            if(this.imgFile){
+                param.append('photo_url',this.imgFile)
             }
             this.$proxy.post('/api/updateAdv', param,config)
             .then( (res)=> {
@@ -107,6 +117,7 @@ export default {
                         message: '恭喜你，更新成功',
                         type: 'success'
                     });
+                    this.getDetail()
                 }else{
                     this.$message.error(res.data.message)
                 }

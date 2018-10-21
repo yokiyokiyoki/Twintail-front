@@ -23,22 +23,14 @@
                 :inactive-value="0">
                 </el-switch>
             </el-form-item>
+            <el-form-item label="第几张是封面">
+                <el-input-number v-model="form.coverIndex" @change="handleChange" :min="1" :max="fileList.length" label="从第一张开始"></el-input-number>
+            </el-form-item>
             <el-form-item label="下属图片">
-                <!-- <el-upload
-                class="upload-demo"
-                action="/api/postPhoto"
-                :on-preview="handlePreview"
-                :on-remove="handleRemove"
-                :on-success="handleAvatarSuccess"
-                :file-list="fileList"
-                list-type="picture">
-                <el-button size="small" type="primary">点击上传</el-button>
-                <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
-                </el-upload> -->
                 <uploader  :multiple='true' :initUrl='originFileListImg'  @getRawFile="imgupload"/>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                <el-button type="primary" @click="onSubmit">立即{{$route.query.id?'修改':'创建'}}</el-button>
                 <el-button @click="$router.push('/admin/adv')">取消</el-button>
             </el-form-item>
         </el-form>
@@ -53,6 +45,7 @@ export default {
     data(){
         //status是0代表双马尾协会成员的
         return{
+            
             //原本的数据，和上传的数据做比较，看看更新的时候有没有删除的罢了
             originFileList:[],
             originFileListImg:[],
@@ -62,7 +55,9 @@ export default {
                 people_id:'',
                 album_name:'',
                 is_banner:false,
-                creatAt:+new Date()
+                creatAt:+new Date(),
+                // 第几张是封面，后端计算
+                coverIndex:1,
             },
             peopleList:[],
             statusList:[{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3}],
@@ -75,8 +70,11 @@ export default {
         this.getAllUsers()
     },
     methods:{
+        handleChange(value) {
+            this.form.coverIndex=value
+        },
         imgupload(data){
-            console.log(data,'11')
+            // console.log(data,'11')
             this.fileList=data
         },
         handleRemove(file, fileList) {
