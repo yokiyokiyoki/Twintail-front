@@ -125,8 +125,8 @@ export default {
     /************************************************************************************/
 
     /****************************** single单图情况 **************************************/
-    handlePreviewSingle (file) {//点击进行图片展示
-      this.dialogImageUrl = this.file.url
+    handlePreviewSingle (e) {//点击进行图片展示
+      this.dialogImageUrl = this.imageUrl
       this.dialogVisible = true
     },
     mouseEnter () {//鼠标划入显示“重新上传”
