@@ -11,7 +11,7 @@
                     </el-carousel>
                 </div>
                 <div class="home-container-body-top-boxContainer clearfix" >
-                    <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
+                    <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index' @click='jumpUrl(item)'>
                         <div class="home-container-body-top-boxContainer-box-pic" style="height:100%;width:100%;">
                             <img :src="item.photo_url" >
                         </div>
@@ -131,6 +131,9 @@ export default {
         }
     },
     methods:{
+        jumpUrl(item){
+            window.open(item.jump_url)
+        },
         handleBanner(item){
             // console.log(item)
             this.$router.push(`/detail/${item.info.id}`)
