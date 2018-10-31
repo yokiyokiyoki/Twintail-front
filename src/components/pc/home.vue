@@ -132,7 +132,7 @@ export default {
     },
     methods:{
         jumpUrl(item){
-            window.open(item.jump_url)
+            location.href=item.jump_url
         },
         handleBanner(item){
             // console.log(item)
