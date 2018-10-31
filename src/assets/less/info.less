@@ -13,8 +13,6 @@
       &-left {
         flex: 2;
         border-right: 1px solid #eaeaea;
-        display: flex;
-        align-items: center;
       }
       &-right {
         flex: 1;
@@ -54,6 +52,12 @@
           user-select: none;
           &-pic {
             flex: 1;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            img {
+              height: auto;
+            }
           }
           &-bottom {
             height: 35px;
