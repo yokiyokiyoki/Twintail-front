@@ -51,7 +51,7 @@ export default {
     fixedNumber: {
       // 剪裁框比例设置
       default: function () {
-        return [3, 1]
+        return [16, 9]
       }
     },
     width: {

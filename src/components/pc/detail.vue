@@ -4,7 +4,7 @@
         <div class="detail-container-body">
             <div class="detail-container-body-left">
                 <div class="box" v-for="(item,index) in list" :key='index'>
-                    <img :src="item.photo_url" style="height:100%;width:100%;">
+                    <img :src="item.photo_url" style="width:100%;">
                 </div>
                 
             </div>
@@ -12,7 +12,7 @@
                 <div class="detail-container-body-right-header">
                     <div class="detail-container-body-right-header-left">
                         <div class="pic" >
-                            <img :src="info.tx_pic" style="height:100%;width:100%;border-radius:100%;">
+                            <img :src="info.tx_pic" style="width:100%;border-radius:100%;">
                         </div>
                     </div>
                     <div class="detail-container-body-right-header-right">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="detail-container-body-right-body">
                     <div class="pic" v-for="(item,index) in list" :key='index' @click="changeImg(item)">
-                        <img :src="item.photo_url" style="height:100%;width:100%;">
+                        <img :src="item.photo_url" style="width:100%;">
                     </div>
                 </div>
             </div>
