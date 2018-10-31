@@ -12,7 +12,7 @@
                 </div>
                 <div class="home-container-body-top-boxContainer clearfix" >
                     <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
-                        <div class="home-container-body-top-boxContainer-box-pic" style="height:90%;">
+                        <div class="home-container-body-top-boxContainer-box-pic" @click="jumpUrl(item)" style="height:90%;cursor:pointer;">
                             <img :src="item.photo_url" >
                         </div>
                         <div class="home-container-body-top-boxContainer-box-txt">{{item.content}}</div>
@@ -127,6 +127,9 @@ export default {
         }
     },
     methods:{
+        jumpUrl(item){
+            window.open(item.jump_url) 
+        },
         handleBanner(item){
             // console.log(item)
             this.$router.push(`/detail/${item.info.id}`)
