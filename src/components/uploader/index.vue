@@ -85,7 +85,7 @@ export default {
   watch: {
     initUrl: function (val) {
       // 监听传入初始化图片
-      console.info('watch')
+      // console.info('watch')
       if (val) {
         if (typeof this.initUrl === 'string') {
           this.imageUrl = val
