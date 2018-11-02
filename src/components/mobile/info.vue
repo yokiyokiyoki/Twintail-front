@@ -19,7 +19,7 @@
                     <div class="card" v-for='(item,index) in info.albums' :key='index' @click="handleClickItem(item)">
                         <div class="box">
                             <div class="box-pic">
-                              <img :src="item.photo[0].photo_url" style="height:100%;width:100%;" v-if='item.photo.length'>
+                              <div class="box-pic-container"><img :src="item.photo[0].photo_url" style="width:100%;" v-if='item.photo.length'></div>
                             </div>
                             <div class="box-bottom clearfix">
                                 <div class="box-bottom-left">{{item.info.album_name}}</div>
@@ -58,7 +58,7 @@ export default {
           this.$proxy.get('/api/getUser',{params:{id:this.$route.params.id}})
           .then( (res)=> {
               this.info=res.data.data
-              console.log(this.info);
+              // console.log(this.info);
           })
         }
     },
@@ -66,11 +66,17 @@ export default {
 </script> 
 <style lang="less" scoped>
 .info-container {
+  &.mobile {
+    .card {
+      width: 50%;
+    }
+  }
   background: #eaeaea;
   height: auto;
   &-header {
     &-img {
       height: 241px;
+      background: white;
     }
     &-msg {
       height: 120px;
@@ -100,9 +106,8 @@ export default {
         padding: 16px 10px 0 10px;
       }
       .card-container {
-        white-space: nowrap;
         overflow-x: auto;
-        overflow-y: hidden;
+        overflow-y: auto;
         height: 260px;
         background: white;
       }
@@ -123,6 +128,11 @@ export default {
           user-select: none;
           &-pic {
             flex: 1;
+            &-container {
+              height: 100%;
+              display: flex;
+              align-items: center;
+            }
           }
           &-bottom {
             font-size: 14px;
