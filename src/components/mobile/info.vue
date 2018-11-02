@@ -122,7 +122,7 @@ export default {
         display: inline-block;
         .box {
           border: 1px solid #eaeaea;
-          height: 100%;
+          height: 99%;
           display: flex;
           flex-direction: column;
           user-select: none;
