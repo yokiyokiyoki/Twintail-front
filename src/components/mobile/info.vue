@@ -19,7 +19,7 @@
                     <div class="card" v-for='(item,index) in info.albums' :key='index' @click="handleClickItem(item)">
                         <div class="box">
                             <div class="box-pic">
-                              <div class="box-pic-container"><img :src="item.photo[0].photo_url" style="width:100%;" v-if='item.photo.length'></div>
+                              <img :src="item.photo[0].photo_url" style="width:100%;" v-if='item.photo.length'>
                             </div>
                             <div class="box-bottom clearfix">
                                 <div class="box-bottom-left">{{item.info.album_name}}</div>
@@ -69,6 +69,13 @@ export default {
   &.mobile {
     .card {
       width: 50%;
+      float: left;
+      .box-pic {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
     }
   }
   background: #eaeaea;

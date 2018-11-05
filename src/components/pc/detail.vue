@@ -2,21 +2,21 @@
     <div class="pc detail-container">
         <common-header/>
         <div class="detail-container-body">
-            <div class="detail-container-body-left">
+            <div class="detail-container-body-left"  v-loading='!dataComplete'>
                 <div class="box" v-for="(item,index) in list" :key='index'>
                     <img :src="item.photo_url" style="width:100%;">
                 </div>
                 
             </div>
-            <div class="detail-container-body-right">
+            <div class="detail-container-body-right" v-loading='!dataComplete'>
                 <div class="detail-container-body-right-header">
-                    <div class="detail-container-body-right-header-left">
+                    <div class="detail-container-body-right-header-left" >
                         <div class="pic" >
                             <img :src="info.tx_pic" style="width:100%;border-radius:100%;">
                         </div>
                     </div>
                     <div class="detail-container-body-right-header-right">
-                        <div class="name">{{info.username}}</div>
+                        <div class="name" @click="$router.push(`/info/${info.people_id}`)">{{info.username}}</div>
                         <div class="name">写真集：{{info.album_name}}</div>
                         <div class="weibo">微博:{{info.weibo}}</div>
                     </div>
@@ -37,7 +37,8 @@ export default {
         return {
             list: [],
             info:{},
-            activeImg:''
+            activeImg:'',
+            dataComplete:false
         };
     },
     created(){
@@ -51,11 +52,13 @@ export default {
             this.activeImg=item.photo_url
         },
         getDetail(){
+            this.dataComplete=false
             this.$proxy.get('/api/getAlbumDetail',{params:{id:this.$route.params.id}})
             .then( (res)=> {
                 this.list=res.data.data.photo
                 this.info=res.data.data.info
                 this.activeImg=this.list[0].photo_url
+                this.dataComplete=true
             })
     },
   }
