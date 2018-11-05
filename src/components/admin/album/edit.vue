@@ -4,6 +4,9 @@
             <el-form-item label="写真集名">
                 <el-input v-model="form.album_name"></el-input>
             </el-form-item>
+            <el-form-item label="摄影">
+                <el-input v-model="form.photographer"></el-input>
+            </el-form-item>
             <el-form-item label="属于" >
                 <el-select v-model="form.people_id" placeholder="请选择" >
                     <el-option
@@ -58,6 +61,7 @@ export default {
                 creatAt:+new Date(),
                 // 第几张是封面，后端计算
                 coverIndex:1,
+                photographer:''
             },
             peopleList:[],
             statusList:[{name:'最新',id:1},{name:'本周热门',id:2},{name:'热门推荐',id:3}],

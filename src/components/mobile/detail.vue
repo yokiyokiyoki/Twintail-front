@@ -5,7 +5,8 @@
             <div class="detail-container-body-top">
               <div class="touxiang"><img :src="info.tx_pic" style="height: 100%;width: 100%;border-radius: 100%;"></div>
               <div class="name" @click="$router.push(`/info/${info.people_id}`)">{{info.username}}</div>
-              <div class="name">写真集：{{info.album_name}}</div>
+              <div class="name sub" >摄影：{{info.photographer}}</div>
+              <div class="name sub">写真集：{{info.album_name}}</div>
               <div class="weibo">微博:{{info.weibo}}</div>
             </div>
             <div class="detail-container-body-bottom">
