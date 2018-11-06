@@ -19,6 +19,11 @@
                         >
                         </el-table-column>
                         <el-table-column
+                        prop="photographer"
+                        label="摄影"
+                        >
+                        </el-table-column>
+                        <el-table-column
                         prop="is_banner"
                         label="是否是banner"
                         >
