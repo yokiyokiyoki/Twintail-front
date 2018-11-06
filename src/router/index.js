@@ -13,6 +13,7 @@ import AdminPeople from "@/components/admin/people";
 import AdminPeopleEdit from "@/components/admin/people/edit";
 import AdminAdv from "@/components/admin/adv";
 import AdminAdvEdit from "@/components/admin/adv/edit";
+import AdminLogin from "@/components/admin/login";
 
 Vue.use(Router);
 
@@ -71,6 +72,10 @@ export default new Router({
           component: AdminAdvEdit
         }
       ]
+    },
+    {
+      path: "/admin/login",
+      component: AdminLogin
     }
   ]
 });

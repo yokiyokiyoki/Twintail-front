@@ -21,6 +21,12 @@ export default {
             this.active=item.id
             this.$router.push(`/admin/${item.id}`)
         }
+    },
+    mounted(){
+        //判断是否已经登陆
+        if(!sessionStorage.getItem('isLogin')){
+            this.$router.push('/admin/login')
+        }
     }
 }
 </script>
