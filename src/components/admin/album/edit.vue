@@ -97,6 +97,7 @@ export default {
                 this.form.people_id=filterItem.info.people_id
                 this.form.album_name=filterItem.info.album_name
                 this.form.is_banner=filterItem.info.is_banner
+                this.form.photographer=filterItem.photographer
                 this.originFileList=[]
                 this.fileList=[]
                 this.originFileListImg=[]
