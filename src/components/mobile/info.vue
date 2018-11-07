@@ -92,6 +92,7 @@ export default {
         text-align: left;
         font-size: 12px;
         margin-left: 20px;
+        text-align: center;
         &.name {
           padding-top: 20px;
           font-size: 14px;
