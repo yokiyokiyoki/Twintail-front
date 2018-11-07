@@ -112,11 +112,17 @@ export default {
                     res=res.filter((item,index)=>{
                         return item.info.star>5
                     })
+                    res=res.sort((a,b)=>{
+                       return b.info.star-a.info.star
+                    })
                 }
                 if(this.menuActive==3){
                     //热门推荐
                     res=res.filter((item,index)=>{
                         return item.info.star>5
+                    })
+                    res=res.sort((a,b)=>{
+                       return b.info.star-a.info.star
                     })
                 }
             }
