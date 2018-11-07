@@ -7,7 +7,7 @@
             </div>
             <div class="info-container-header-msg" v-if='info.people'>
                 <div class="ct name">{{info.people.username}}</div>
-                <div class="ct id">ID:{{info.people.self_ID}}</div>
+                <div class="ct id">昵称:{{info.people.self_ID}}</div>
                 <div class="ct weibo">微博：{{info.people.weibo}}</div>
                 <div class="ct intro">简介：{{info.people.intro}}</div>
             </div>

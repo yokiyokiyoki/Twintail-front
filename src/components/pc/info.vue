@@ -8,7 +8,7 @@
                 </div>
                 <div class="info-container-body-top-right" v-if='info.people'>
                     <div class="info-container-body-top-right-name">{{info.people.username}}</div>
-                    <div class="info-container-body-top-right-text">ID:{{info.people.self_ID}}</div>
+                    <div class="info-container-body-top-right-text">昵称:{{info.people.self_ID}}</div>
                     <div class="info-container-body-top-right-text">微博:{{info.people.weibo}}</div>
                     <div class="info-container-body-top-right-text">简介：{{info.people.intro}}</div>
                 </div>
