@@ -17,9 +17,9 @@
                     </div>
                     <div class="detail-container-body-right-header-right">
                         <div class="name" @click="$router.push(`/info/${info.people_id}`)">{{info.username}}</div>
-                        <div class="name sub" >摄影：{{info.photographer}}</div>
-                        <div class="name sub">写真集：{{info.album_name}}</div>
                         <div class="weibo">微博:{{info.weibo}}</div>
+                        <div class="name sub">写真集：{{info.album_name}}</div>
+                        <div class="name sub" >摄影：{{info.photographer}}</div>
                     </div>
                 </div>
                 <div class="detail-container-body-right-body">
