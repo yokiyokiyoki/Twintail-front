@@ -48,6 +48,7 @@ export default {
         
         resultClick(item){
             this.$router.push(`/info/${item.other}`)
+            this.show=false
         },
         loadAll() {
             this.$proxy.get('/api/getAllUsers').then(res=>{
