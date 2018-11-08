@@ -13,7 +13,7 @@
             <van-icon name="search" @click="showInput"/>
         </div>
         <vux-search placeholder='请搜索小姐姐' v-model="value" :results='results' @on-change='getResults'
-        @result-click="resultClick" ref="search" @on-cancel="onCancel" v-show='show'/>
+        @result-click="resultClick"  ref="search" @on-cancel="onCancel" v-show='show'/>
     </div>
     
 </template>
@@ -40,10 +40,12 @@ export default {
             this.$nextTick(()=>{
                 this.$refs.search.setFocus()
             })
+            this.results=this.list
         },
         onCancel(){
             this.show=false
         },
+        
         resultClick(item){
             this.$router.push(`/info/${item.other}`)
         },
@@ -108,17 +110,8 @@ export default {
     font-size: 20px;
     color: rgb(239, 156, 190);
   }
-  .van-dialog {
-    &.dialog {
-      .van-dialog__content {
-        overflow: hidden;
-      }
-      .el-input {
-        .el-input__suffix {
-          line-height: 40px;
-        }
-      }
-    }
+  .vux-search-box {
+    z-index: 100;
   }
 }
 </style>
