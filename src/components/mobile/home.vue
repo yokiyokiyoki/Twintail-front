@@ -10,7 +10,7 @@
                         </van-swipe-item>
                     </van-swipe>
                 </div>
-                <div class="home-container-body-top-boxContainer clearfix" >
+                <div class="home-container-body-top-boxContainer clearfix" ref='guanggao-box'>
                     <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
                         <div class="home-container-body-top-boxContainer-box-pic" @click="jumpUrl(item)" style="height:90%;cursor:pointer;">
                             <img :src="item.photo_url" >
@@ -40,7 +40,7 @@
                 </van-tabs>
                 <div class="home-container-body-bottom-member" >
                     <div class="title">双马尾协会成员</div>
-                    <div class="home-container-body-top-boxContainer clearfix" >
+                    <div class="home-container-body-top-boxContainer clearfix" ref='tx-box'>
                         <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in peopleList' :key='index' @click="jumpInfo(item)">
                            <div class="box-left">
                                 <div class="pic">
@@ -66,6 +66,7 @@
 </template>
 <script>
 import commonHeader from './header'
+import { setTimeout, setInterval, clearInterval } from 'timers';
 export default {
     components:{
         commonHeader
@@ -76,13 +77,37 @@ export default {
             menuActive:0,
             peopleList:[],
             advList:[],
-            albumLists:[]
+            albumLists:[],
+            timeggId:null,
+            timeppId:null
         }
     },
     created(){
         this.getAllUsers()
         this.getAllAdvs()
         this.getAllAlbums()
+    },
+    mounted(){
+        this.$nextTick(()=>{
+            this.timeggId=setInterval(()=>{
+                if(this.$refs['guanggao-box'].scrollLeft<this.$refs['guanggao-box'].scrollWidth){
+                    this.$refs['guanggao-box'].scrollLeft++
+                }else{
+                    clearInterval(this.timeggId)
+                }
+            },100)
+            this.timeppId=setInterval(()=>{
+                if(this.$refs['tx-box'].scrollLeft<this.$refs['tx-box'].scrollWidth){
+                    this.$refs['tx-box'].scrollLeft++
+                }else{
+                    clearInterval(this.timeppId)
+                }
+            },100)
+        })
+    },
+    beforeDestroy(){
+        clearInterval(this.timeggId)
+        clearInterval(this.timeppId)
     },
     computed:{
         activeAlbum(){
@@ -150,10 +175,7 @@ export default {
                     this.$message.error(res.data.message)
                 }
             })
-            console.log(item)
-        },
-        changeMunu(item){
-            console.log(item)
+            // console.log(item)
         },
         jumpInfo(item){
             this.$router.push({name:'Info',params:{id:item.id}})
@@ -177,11 +199,9 @@ export default {
             })
         },
         handleClickItem(item){
-            console.log(item)
             this.$router.push(`/detail/${item.info.id}`)
         },
         handleClickMenu(item){
-            console.log(item)
             this.activeItem=item
         }
     }
