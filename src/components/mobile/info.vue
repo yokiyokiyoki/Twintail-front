@@ -152,6 +152,11 @@ export default {
               float: left;
               margin-left: 15px;
               font-size: 14px;
+              width: 100px;
+              text-align: left;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
             }
             &-right {
               float: right;
