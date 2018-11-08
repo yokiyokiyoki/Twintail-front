@@ -10,14 +10,14 @@
                         </van-swipe-item>
                     </van-swipe>
                 </div>
-                <div class="home-container-body-top-boxContainer clearfix" ref='guanggao-box'>
+                <marquee direction="right" behavior="alternate" scrollamount='1' class="home-container-body-top-boxContainer clearfix" >
                     <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
                         <div class="home-container-body-top-boxContainer-box-pic" @click="jumpUrl(item)" style="height:90%;cursor:pointer;">
                             <img :src="item.photo_url" >
                         </div>
                         <div class="home-container-body-top-boxContainer-box-txt">{{item.content}}</div>
                     </div>
-                </div>
+                </marquee>
             </div>
             <div class="home-container-body-bottom">
                 <van-tabs v-model="menuActive" class="card" >
@@ -38,9 +38,10 @@
                         </div>
                     </van-tab>
                 </van-tabs>
+                
                 <div class="home-container-body-bottom-member" >
                     <div class="title">双马尾协会成员</div>
-                    <div class="home-container-body-top-boxContainer clearfix" ref='tx-box'>
+                    <marquee direction="right" behavior="alternate" scrollamount='1' class="home-container-body-top-boxContainer clearfix" >
                         <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in peopleList' :key='index' @click="jumpInfo(item)">
                            <div class="box-left">
                                 <div class="pic">
@@ -58,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </marquee>
                 </div>
             </div>
         </div>
@@ -66,7 +67,7 @@
 </template>
 <script>
 import commonHeader from './header'
-import { setTimeout, setInterval, clearInterval } from 'timers';
+
 export default {
     components:{
         commonHeader
@@ -79,6 +80,8 @@ export default {
             advList:[],
             albumLists:[],
             timeggId:null,
+            //是否反向
+            timeggReverse:false,
             timeppId:null
         }
     },
@@ -88,26 +91,8 @@ export default {
         this.getAllAlbums()
     },
     mounted(){
-        this.$nextTick(()=>{
-            this.timeggId=setInterval(()=>{
-                if(this.$refs['guanggao-box'].scrollLeft<this.$refs['guanggao-box'].scrollWidth){
-                    this.$refs['guanggao-box'].scrollLeft++
-                }else{
-                    clearInterval(this.timeggId)
-                }
-            },100)
-            this.timeppId=setInterval(()=>{
-                if(this.$refs['tx-box'].scrollLeft<this.$refs['tx-box'].scrollWidth){
-                    this.$refs['tx-box'].scrollLeft++
-                }else{
-                    clearInterval(this.timeppId)
-                }
-            },100)
-        })
     },
     beforeDestroy(){
-        clearInterval(this.timeggId)
-        clearInterval(this.timeppId)
     },
     computed:{
         activeAlbum(){
