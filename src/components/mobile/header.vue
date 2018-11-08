@@ -10,83 +10,57 @@
             </div>
         </div>
         <div class="container-header-right">
-            <van-icon name="search" @click="searchDialog"/>
+            <van-icon name="search" @click="showInput"/>
         </div>
-        <van-dialog
-        v-model="show"
-        :show-cancel-button='false'
-        :show-confirm-button='false'
-        :before-close="beforeClose"
-        class="dialog"
-        :close-on-click-overlay='true'
-        >
-            <el-autocomplete
-            v-model="search"
-            :fetch-suggestions="querySearchAsync"
-            placeholder="搜索"
-            @select="handleSelect"
-            >
-             <i
-                class="el-icon-search"
-                slot="suffix">
-            </i>
-            </el-autocomplete>
-        </van-dialog>
+        <vux-search placeholder='请搜索小姐姐' v-model="value" :results='results' @on-change='getResults'
+        @result-click="resultClick" ref="search" @on-cancel="onCancel" v-show='show'/>
     </div>
     
 </template>
 <script>
+import { Search } from 'vux'
 export default {
-    data(){
-        return{
-            search:'',
-            show:false,
-            list:[]
+    components:{
+        VuxSearch:Search,
+    },
+    data () {
+        return {
+            value: '',
+            results:[],
+            list:[],
+            show:false
         }
     },
-    mounted() {
-      this.list = this.loadAll();
+    created(){
+        this.loadAll()
     },
     methods:{
-        handleSelect(item) {
-            this.show=false
-            this.$router.push(`/info/${item.id}`)
-        },
-        searchDialog(){
+        showInput(){
             this.show=true
+            this.$nextTick(()=>{
+                this.$refs.search.setFocus()
+            })
         },
-        beforeClose(action, done) {
-            if (action === 'confirm') {
-                setTimeout(done, 1000);
-            } else {
-                done();
-            }
+        onCancel(){
+            this.show=false
         },
-        querySearchAsync(queryString, cb) {
-            var list = this.list;
-            var results = queryString ? list.filter(this.createStateFilter(queryString)) : list;
-            // 调用 callback 返回建议列表的数据
-            cb(results);
-        },
-        createStateFilter(queryString) {
-            return (state) => {
-            return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-            };
+        resultClick(item){
+            this.$router.push(`/info/${item.other}`)
         },
         loadAll() {
-            let arr=[]
             this.$proxy.get('/api/getAllUsers').then(res=>{
-                // console.log(res)
                 res.data.data.forEach((item)=>{
-                arr.push({'value':item.username,'id':item.id})
+                    this.list.push({'title':item.username,'other':item.id})
                 })
             })
-            return arr
-            // return [
-            //   { "value": "三全鲜食（北新泾店）", "address": "长宁区新渔路144号" },
-            // ];
+        },
+        getResults (val) {
+            this.results = val ? this.list.filter(item=>{
+                return item.title.includes(val)
+            }) : this.list
         },
     }
+    
 }
 </script>
 
