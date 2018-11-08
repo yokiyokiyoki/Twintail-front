@@ -82,7 +82,7 @@ export default new Router({
 
 function IsPC() {
   let userAgentInfo = navigator.userAgent;
-  var Agents = [
+  const Agents = [
     "Android",
     "iPhone",
     "SymbianOS",
@@ -96,6 +96,11 @@ function IsPC() {
       flag = false;
       break;
     }
+  }
+
+  //当手机请求桌面端，根据网页可见宽度变回移动端
+  if (document.body.offsetWidth < 650) {
+    flag = false;
   }
   return flag;
 }
