@@ -10,14 +10,14 @@
                         </van-swipe-item>
                     </van-swipe>
                 </div>
-                <marquee direction="right" behavior="alternate" scrollamount='1' class="home-container-body-top-boxContainer clearfix" >
+                <div class="home-container-body-top-boxContainer clearfix" ref='adv-box'>
                     <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
                         <div class="home-container-body-top-boxContainer-box-pic" @click="jumpUrl(item)" style="height:90%;cursor:pointer;">
                             <img :src="item.photo_url" >
                         </div>
                         <div class="home-container-body-top-boxContainer-box-txt">{{item.content}}</div>
                     </div>
-                </marquee>
+                </div>
             </div>
             <div class="home-container-body-bottom">
                 <van-tabs v-model="menuActive" class="card" >
@@ -41,7 +41,7 @@
                 
                 <div class="home-container-body-bottom-member" >
                     <div class="title">双马尾协会成员</div>
-                    <marquee direction="right" behavior="alternate" scrollamount='1' class="home-container-body-top-boxContainer clearfix" >
+                    <div class="home-container-body-top-boxContainer clearfix" ref='user-box'>
                         <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in peopleList' :key='index' @click="jumpInfo(item)">
                            <div class="box-left">
                                 <div class="pic">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                    </marquee>
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,6 +67,7 @@
 </template>
 <script>
 import commonHeader from './header'
+import { setInterval, clearInterval } from 'timers';
 
 export default {
     components:{
@@ -82,7 +83,8 @@ export default {
             timeggId:null,
             //是否反向
             timeggReverse:false,
-            timeppId:null
+            timeppId:null,
+            timeppReverse:false,
         }
     },
     created(){
@@ -91,8 +93,12 @@ export default {
         this.getAllAlbums()
     },
     mounted(){
+        this.setRightAdvRoll()
+        this.setRightUserRoll()
     },
     beforeDestroy(){
+        clearInterval(this.timeggId)
+        clearInterval(this.timeppId)
     },
     computed:{
         activeAlbum(){
@@ -143,6 +149,52 @@ export default {
         }
     },
     methods:{
+        setRightAdvRoll(){
+            !this.timeggReverse&&(this.timeggId=setInterval(()=>{
+                if(this.$refs['adv-box'].scrollLeft+this.$refs['adv-box'].clientWidth<this.$refs['adv-box'].scrollWidth){
+                    this.$refs['adv-box'].scrollLeft++
+                }else{
+                    clearInterval(this.timeggId)
+                    this.timeggReverse=true
+                    this.setLeftAdvRoll()
+                }
+            },50))
+        },
+        setLeftAdvRoll(){
+            this.timeggReverse&&(this.timeggId=setInterval(()=>{
+                if(this.$refs['adv-box'].scrollLeft==0){
+                    clearInterval(this.timeggId)
+                    this.timeggReverse=false
+                    this.setRightAdvRoll()
+                }else{
+                    this.$refs['adv-box'].scrollLeft--
+                }
+                
+            },50))
+        },
+        setRightUserRoll(){
+            !this.timeppReverse&&(this.timeppId=setInterval(()=>{
+                if(this.$refs['user-box'].scrollLeft+this.$refs['user-box'].clientWidth<this.$refs['user-box'].scrollWidth){
+                    this.$refs['user-box'].scrollLeft++
+                }else{
+                    clearInterval(this.timeppId)
+                    this.timeppReverse=true
+                    this.setLeftUserRoll()
+                }
+            },50))
+        },
+        setLeftUserRoll(){
+            this.timeppReverse&&(this.timeppId=setInterval(()=>{
+                if(this.$refs['user-box'].scrollLeft==0){
+                    clearInterval(this.timeppId)
+                    this.timeppReverse=false
+                    this.setRightUserRoll()
+                }else{
+                    this.$refs['user-box'].scrollLeft--
+                }
+                
+            },50))
+        },
         jumpUrl(item){
             window.open(item.jump_url) 
         },
