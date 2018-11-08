@@ -10,7 +10,7 @@
                         </van-swipe-item>
                     </van-swipe>
                 </div>
-                <div class="home-container-body-top-boxContainer clearfix" ref='adv-box'>
+                <div class="home-container-body-top-boxContainer clearfix" ref='adv-box' @mouseover="stopAdvTimeId" @mouseout="setRightAdvRoll">
                     <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
                         <div class="home-container-body-top-boxContainer-box-pic" @click="jumpUrl(item)" style="height:90%;cursor:pointer;">
                             <img :src="item.photo_url" >
@@ -41,7 +41,7 @@
                 
                 <div class="home-container-body-bottom-member" >
                     <div class="title">双马尾协会成员</div>
-                    <div class="home-container-body-top-boxContainer clearfix" ref='user-box'>
+                    <div class="home-container-body-top-boxContainer clearfix" @mouseover="stopUserTimeId" @mouseout="setRightUserRoll" ref='user-box'>
                         <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in peopleList' :key='index' @click="jumpInfo(item)">
                            <div class="box-left">
                                 <div class="pic">
@@ -97,8 +97,8 @@ export default {
         this.setRightUserRoll()
     },
     beforeDestroy(){
-        clearInterval(this.timeggId)
-        clearInterval(this.timeppId)
+        this.stopAdvTimeId()
+        this.stopUserTimeId()
     },
     computed:{
         activeAlbum(){
@@ -149,6 +149,12 @@ export default {
         }
     },
     methods:{
+        stopAdvTimeId(){
+            clearInterval(this.timeggId)
+        },
+        stopUserTimeId(){
+            clearInterval(this.timeppId)
+        },
         setRightAdvRoll(){
             !this.timeggReverse&&(this.timeggId=setInterval(()=>{
                 if(this.$refs['adv-box'].scrollLeft+this.$refs['adv-box'].clientWidth<this.$refs['adv-box'].scrollWidth){
