@@ -25,7 +25,7 @@
                                 <div class="box-bottom-left">{{item.info.album_name}}</div>
                                 <div class="box-bottom-right">
                                     <i class="el-icon-star-on"></i>
-                                    <span class="num">{{item.info.view}}</span>
+                                    <span class="num">{{item.info.star}}</span>
                                 </div>
                             </div>
                         </div>
