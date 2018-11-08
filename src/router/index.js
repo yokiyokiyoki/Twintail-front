@@ -6,7 +6,6 @@ import PCDetail from "@/components/pc/detail";
 import MOBILEHome from "@/components/mobile/home";
 import MOBILEDetail from "@/components/mobile/detail";
 import MOBILEInfo from "@/components/mobile/info";
-import MOBILESearch from "@/components/mobile/search";
 import Admin from "@/components/admin";
 import AdminAlbum from "@/components/admin/album";
 import AdminAlbumEdit from "@/components/admin/album/edit";
@@ -35,11 +34,6 @@ export default new Router({
       path: "/detail/:id",
       name: "Detail",
       component: IsPC() ? PCDetail : MOBILEDetail
-    },
-    {
-      path: "/search",
-      name: "Search",
-      component: MOBILESearch
     },
     {
       path: "/admin",
