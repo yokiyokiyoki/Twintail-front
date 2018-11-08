@@ -58,6 +58,11 @@ export default {
           })
         }
     },
+    watch:{
+      '$route'(val,oldVal){
+        this.getDetail()
+      }
+    }
 }
 </script>
 

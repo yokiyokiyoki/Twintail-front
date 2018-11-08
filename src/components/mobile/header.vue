@@ -14,8 +14,11 @@
         </div>
         <van-dialog
         v-model="show"
-        show-cancel-button
+        :show-cancel-button='false'
+        :show-confirm-button='false'
         :before-close="beforeClose"
+        class="dialog"
+        :close-on-click-overlay='true'
         >
             <el-autocomplete
             v-model="search"
@@ -46,8 +49,9 @@ export default {
     },
     methods:{
         handleSelect(item) {
-        this.$router.push(`/info/${item.id}`)
-      },
+            this.show=false
+            this.$router.push(`/info/${item.id}`)
+        },
         searchDialog(){
             this.show=true
         },
@@ -92,6 +96,7 @@ export default {
   box-sizing: border-box;
   border-bottom: 1px solid #eaeaea;
   background: white;
+
   &-left {
     float: left;
     display: flex;
@@ -128,6 +133,18 @@ export default {
     margin-right: 15px;
     font-size: 20px;
     color: rgb(239, 156, 190);
+  }
+  .van-dialog {
+    &.dialog {
+      .van-dialog__content {
+        overflow: hidden;
+      }
+      .el-input {
+        .el-input__suffix {
+          line-height: 40px;
+        }
+      }
+    }
   }
 }
 </style>
