@@ -10,7 +10,7 @@
                         </van-swipe-item>
                     </van-swipe>
                 </div>
-                <div class="home-container-body-top-boxContainer clearfix" ref='adv-box' @mouseover="stopAdvTimeId" @mouseout="setRightAdvRoll">
+                <div class="home-container-body-top-boxContainer clearfix" ref='adv-box' @touchstart='stopAdvTimeId' @touchend="setAdvRoll">
                     <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in advList' :key='index'>
                         <div class="home-container-body-top-boxContainer-box-pic" @click="jumpUrl(item)" style="height:90%;cursor:pointer;">
                             <img :src="item.photo_url" >
@@ -41,7 +41,7 @@
                 
                 <div class="home-container-body-bottom-member" >
                     <div class="title">双马尾协会成员</div>
-                    <div class="home-container-body-top-boxContainer clearfix" @mouseover="stopUserTimeId" @mouseout="setRightUserRoll" ref='user-box'>
+                    <div class="home-container-body-top-boxContainer clearfix" @touchstart='stopUserTimeId' @touchend="setUserRoll"  ref='user-box'>
                         <div class="home-container-body-top-boxContainer-box" v-for='(item,index) in peopleList' :key='index' @click="jumpInfo(item)">
                            <div class="box-left">
                                 <div class="pic">
@@ -154,6 +154,20 @@ export default {
         },
         stopUserTimeId(){
             clearInterval(this.timeppId)
+        },
+        setAdvRoll(){
+            if(this.timeggReverse){
+                this.setLeftAdvRoll()
+            }else{
+                this.setRightAdvRoll()
+            }
+        },
+        setAdvRoll(){
+            if(this.timeddReverse){
+                this.setLeftUserRoll()
+            }else{
+                this.setRightUserRoll()
+            }
         },
         setRightAdvRoll(){
             !this.timeggReverse&&(this.timeggId=setInterval(()=>{
