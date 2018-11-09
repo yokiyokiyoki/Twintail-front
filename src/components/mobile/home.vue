@@ -162,8 +162,8 @@ export default {
                 this.setRightAdvRoll()
             }
         },
-        setAdvRoll(){
-            if(this.timeddReverse){
+        setUserRoll(){
+            if(this.timeppReverse){
                 this.setLeftUserRoll()
             }else{
                 this.setRightUserRoll()
