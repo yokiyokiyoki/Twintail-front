@@ -107,7 +107,7 @@ export default {
                 if(this.menuActive==2){
                     //本周热门
                     res=res.filter((item,index)=>{
-                        return +this.$moment().startOf('isoWeek')<item.info.creatAt<+this.$moment().endOf('isoWeek')
+                        return +this.$moment().startOf('isoWeek')<+item.info.creatAt&&item.info.creatAt<+this.$moment().endOf('isoWeek')
                     })
                     res=res.filter((item,index)=>{
                         return item.info.star>5

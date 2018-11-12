@@ -103,6 +103,7 @@ export default {
     computed:{
         activeAlbum(){
             let res
+            console.log(this.menuActive)
             if(this.menuActive==3){
                 //双马尾协会成员
                 res=this.albumLists.filter((item,index)=>{
@@ -119,7 +120,7 @@ export default {
                 if(this.menuActive==1){
                     //本周热门
                     res=res.filter((item,index)=>{
-                        return +this.$moment().startOf('isoWeek')<item.info.creatAt<+this.$moment().endOf('isoWeek')
+                        return +this.$moment().startOf('isoWeek')<+item.info.creatAt&&item.info.creatAt<+this.$moment().endOf('isoWeek')
                     })
                     res=res.filter((item,index)=>{
                         return item.info.star>5
@@ -127,6 +128,7 @@ export default {
                     res=res.sort((a,b)=>{
                        return b.info.star-a.info.star
                     })
+                    console.log(res,+this.$moment().startOf('isoWeek'),+this.$moment().endOf('isoWeek'))
                 }
                 if(this.menuActive==2){
                     //热门推荐
