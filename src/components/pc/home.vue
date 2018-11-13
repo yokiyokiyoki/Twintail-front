@@ -103,6 +103,10 @@ export default {
                 })
                 if(this.menuActive==1){
                     //最新
+                    res=this.$R.clone(res)
+                    res=res.sort((a,b)=>{
+                       return +b.info.creatAt-(+a.info.creatAt)
+                    })
                 }
                 if(this.menuActive==2){
                     //本周热门
