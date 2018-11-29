@@ -1,73 +1,85 @@
 <template>
-    <div class="mobile info-container">
-        <common-header/>
-        <div class="info-container-header">
-            <div class="info-container-header-img" v-if='info.people'>
-                <img :src="info.people.tx_pic"  style="height:100%;max-width:100%;">
-            </div>
-            <div class="info-container-header-msg" v-if='info.people'>
-                <div class="ct name">{{info.people.username}}</div>
-                <div class="ct id">昵称:{{info.people.self_ID}}</div>
-                <div class="ct weibo">微博：{{info.people.weibo}}</div>
-                <div class="ct intro">简介：{{info.people.intro}}</div>
-            </div>
-        </div>
-        <div class="info-container-body">
-            <div class="info-container-body-item">
-                <div class="title">写真集</div>
-                <div class="card-container">
-                    <div class="card" v-for='(item,index) in info.albums' :key='index' @click="handleClickItem(item)">
-                        <div class="box">
-                            <div class="box-pic">
-                              <img :src="item.photo[0].photo_url" style="width:100%;" v-if='item.photo.length'>
-                            </div>
-                            <div class="box-bottom clearfix">
-                                <div class="box-bottom-left">{{item.info.album_name}}</div>
-                                <div class="box-bottom-right">
-                                    <i class="el-icon-star-on"></i>
-                                    <span class="num">{{item.info.star}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="mobile info-container">
+    <common-header/>
+    <div class="info-container-header">
+      <div class="info-container-header-img" v-if="info.people">
+        <img :src="info.people.tx_pic" style="height:100%;max-width:100%;">
+      </div>
+      <div class="info-container-header-msg" v-if="info.people">
+        <div class="ct name">{{info.people.username}}</div>
+        <div class="ct id">昵称:{{info.people.self_ID}}</div>
+        <div class="ct weibo">微博：{{info.people.weibo}}</div>
+        <div class="ct intro">简介：{{info.people.intro}}</div>
+      </div>
     </div>
+    <div class="info-container-body">
+      <div class="info-container-body-item">
+        <div class="title">写真集</div>
+        <div class="card-container">
+          <div
+            class="card"
+            v-for="(item,index) in info.albums"
+            :key="index"
+            @click="handleClickItem(item)"
+          >
+            <div class="box">
+              <div class="box-pic">
+                <img
+                  :src="subItem.photo_url"
+                  v-for="(subItem,subIndex) in item.photo"
+                  :key="subIndex"
+                  v-if="subItem.is_cover==1"
+                  style="width:100%;"
+                >
+              </div>
+              <div class="box-bottom clearfix">
+                <div class="box-bottom-left">{{item.info.album_name}}</div>
+                <div class="box-bottom-right">
+                  <i class="el-icon-star-on"></i>
+                  <span class="num">{{item.info.star}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
-import commonHeader from './header'
+import commonHeader from "./header";
 export default {
-    components:{
-        commonHeader
+  components: {
+    commonHeader
+  },
+  data() {
+    return {
+      info: {}
+    };
+  },
+  created() {
+    this.getDetail();
+  },
+  methods: {
+    handleClickItem(item) {
+      // console.log(item)
+      this.$router.push(`/detail/${item.info.id}`);
     },
-    data(){
-      return{
-        info:{}
-      }
-    },
-    created(){
-      this.getDetail()
-    },
-    methods:{
-        handleClickItem(item){
-          // console.log(item)
-          this.$router.push(`/detail/${item.info.id}`)
-        },
-        getDetail(){
-          this.$proxy.get('/api/getUser',{params:{id:this.$route.params.id}})
-          .then( (res)=> {
-              this.info=res.data.data
-              // console.log(this.info);
-          })
-        }
-    },
-    watch:{
-      '$route'(val,oldVal){
-        this.getDetail()
-      }
+    getDetail() {
+      this.$proxy
+        .get("/api/getUser", { params: { id: this.$route.params.id } })
+        .then(res => {
+          this.info = res.data.data;
+          // console.log(this.info);
+        });
     }
-}
+  },
+  watch: {
+    $route(val, oldVal) {
+      this.getDetail();
+    }
+  }
+};
 </script> 
 <style lang="less" scoped>
 .info-container {
