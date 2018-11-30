@@ -3,7 +3,8 @@
     <common-header/>
     <div class="info-container-header">
       <div class="info-container-header-img" v-if="info.people">
-        <img :src="info.people.tx_pic" style="height:100%;max-width:100%;">
+        <!-- <img :src="info.people.tx_pic" style="height:100%;max-width:100%;"> -->
+        <v-img :src="info.people.tx_pic" style="height:100%;max-width:100%;"></v-img>
       </div>
       <div class="info-container-header-msg" v-if="info.people">
         <div class="ct name">{{info.people.username}}</div>
@@ -24,13 +25,20 @@
           >
             <div class="box">
               <div class="box-pic">
-                <img
+                <!-- <img
                   :src="subItem.photo_url"
                   v-for="(subItem,subIndex) in item.photo"
                   :key="subIndex"
                   v-if="subItem.is_cover==1"
                   style="width:100%;"
-                >
+                >-->
+                <v-img
+                  :src="subItem.photo_url"
+                  v-for="(subItem,subIndex) in item.photo"
+                  :key="subIndex"
+                  v-if="subItem.is_cover==1"
+                  style="width:100%;"
+                ></v-img>
               </div>
               <div class="box-bottom clearfix">
                 <div class="box-bottom-left">{{item.info.album_name}}</div>
@@ -48,9 +56,11 @@
 </template>
 <script>
 import commonHeader from "./header";
+import vImg from "./img";
 export default {
   components: {
-    commonHeader
+    commonHeader,
+    vImg
   },
   data() {
     return {
