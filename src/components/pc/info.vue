@@ -3,7 +3,7 @@
     <common-header/>
     <div class="info-container-body">
       <div class="info-container-body-top">
-        <div class="info-container-body-top-left" v-if="info.people">
+        <div class="info-container-body-top-left" v-if="info.people" style="position:relative;">
           <!-- <img :src="info.people.tx_pic" style="height:100%;max-width:100%;"> -->
           <v-img :src="info.people.tx_pic" style="height:100%;max-width:100%;"></v-img>
         </div>
@@ -22,7 +22,7 @@
           @click="handleClickItem(item)"
         >
           <div class="info-container-body-middle-box-container">
-            <div class="info-container-body-middle-box-container-pic">
+            <div class="info-container-body-middle-box-container-pic" style="position:relative;">
               <!-- <img
                 :src="subItem.photo_url"
                 v-for="(subItem,subIndex) in item.photo"

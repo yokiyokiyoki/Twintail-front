@@ -55,7 +55,7 @@
               :key="index"
             >
               <div class="box">
-                <div class="box-pic" @click="handleClickItem(item)">
+                <div class="box-pic" @click="handleClickItem(item)" style="position:relative;">
                   <!-- <img
                     :src="subItem.photo_url"
                     v-for="(subItem,subIndex) in item.photo"
@@ -98,7 +98,7 @@
               @click="jumpInfo(item)"
             >
               <div class="box-left">
-                <div class="pic">
+                <div class="pic" style="position:relative;">
                   <!-- <img :src="item.tx_pic" style="height:100%;width:100%;border-radius:100%;"> -->
                   <v-img :src="item.tx_pic" style="height:100%;width:100%;border-radius:100%;"></v-img>
                 </div>

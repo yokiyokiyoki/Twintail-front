@@ -2,7 +2,7 @@
   <div class="mobile info-container">
     <common-header/>
     <div class="info-container-header">
-      <div class="info-container-header-img" v-if="info.people">
+      <div class="info-container-header-img" v-if="info.people" style="position:relative;">
         <!-- <img :src="info.people.tx_pic" style="height:100%;max-width:100%;"> -->
         <v-img :src="info.people.tx_pic" style="height:100%;max-width:100%;"></v-img>
       </div>
@@ -24,7 +24,7 @@
             @click="handleClickItem(item)"
           >
             <div class="box">
-              <div class="box-pic">
+              <div class="box-pic" style="position:relative;">
                 <!-- <img
                   :src="subItem.photo_url"
                   v-for="(subItem,subIndex) in item.photo"

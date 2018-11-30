@@ -3,7 +3,12 @@
     <common-header/>
     <div class="detail-container-body">
       <div class="detail-container-body-left" v-loading="!dataComplete">
-        <div class="box" v-for="(item,index) in list" :key="index">
+        <div
+          class="box"
+          v-for="(item,index) in list"
+          :key="index"
+          style="position:relative;min-height: 100px;"
+        >
           <!-- <img :src="item.photo_url" style="width:100%;"> -->
           <v-img :src="item.photo_url" style="width:100%;"></v-img>
         </div>
@@ -11,7 +16,7 @@
       <div class="detail-container-body-right" v-loading="!dataComplete">
         <div class="detail-container-body-right-header">
           <div class="detail-container-body-right-header-left">
-            <div class="pic">
+            <div class="pic" style="position:relative;">
               <!-- <img :src="info.tx_pic" style="width:100%;border-radius:100%;"> -->
               <v-img :src="info.tx_pic" style="width:100%;border-radius:100%;"></v-img>
             </div>
@@ -24,7 +29,13 @@
           </div>
         </div>
         <div class="detail-container-body-right-body">
-          <div class="pic" v-for="(item,index) in list" :key="index" @click="changeImg(item)">
+          <div
+            class="pic"
+            v-for="(item,index) in list"
+            :key="index"
+            @click="changeImg(item)"
+            style="position:relative;"
+          >
             <!-- <img :src="item.photo_url" style="width:100%;"> -->
             <v-img :src="item.photo_url" style="width:100%;"></v-img>
           </div>

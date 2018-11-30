@@ -3,7 +3,7 @@
     <common-header/>
     <div class="detail-container-body">
       <div class="detail-container-body-top">
-        <div class="touxiang">
+        <div class="touxiang" style="position:relative;">
           <!-- <img :src="info.tx_pic" style="height: 100%;width: 100%;border-radius: 100%;"> -->
           <v-img :src="info.tx_pic" style="height: 100%;width: 100%;border-radius: 100%;"></v-img>
         </div>
